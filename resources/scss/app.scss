@@ -1,0 +1,34 @@
+/* General Stuff */
+/* Colors */
+$black: #000;
+$white: #fff;
+
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,400i,700);
+
+/*
+	General Bootstrap Variables
+		List with all variables can be found here:
+			node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables
+*/
+
+$body-bg: #fff;
+// $font-family-sans-serif:  Ubuntu, Helvetica, Arial, sans-serif;
+// $font-family-serif:       Ubuntu, Georgia, "Times New Roman", Times, serif !default;
+$font-family-sans-serif: 'Lato', sans-serif;
+
+$grid-columns: 12;
+$grid-gutter-width: 15px;
+
+@import "bootstrap";
+/* END */
+
+/* Importing app stuff! */
+@import "mixins";
+@import "utilities";
+@import "components/_header";
+@import "components/_footer";
+
+
+
+
