@@ -24,9 +24,19 @@ $container['logger'] = function($c) {
 	return $logger;
 };
 
-
 // Load Helpers here ....
 require __DIR__ . '/classes/helpers/urlFor.php';
+
+// db
+$container['db'] = function ($container) {
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($container['settings']['db']);
+
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+};
 
 
 $container[App\Controllers\Home::class] = function($c) {

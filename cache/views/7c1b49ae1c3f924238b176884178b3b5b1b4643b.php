@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Cursul BNR afisat astazi 30 Octombrie 2016 a fost licitat de catre BNR in data de: 28 Octombrie 2016</div>
+				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?></div>
 				
 				<table class="table table-hover">
 					<thead>
@@ -35,38 +35,10 @@
 						<th>Poimaine</th>
 					</thead>
 					<tbody>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
+						<?php $__currentLoopData = $rates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+						<tr><td>FLAG</td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->value); ?></td><td>-0,0059</td><td>4,4978</td></tr>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+						
 					</tbody>
 				</table>
 			</div>

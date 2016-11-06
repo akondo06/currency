@@ -26,7 +26,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Cursul BNR afisat astazi 30 Octombrie 2016 a fost licitat de catre BNR in data de: 28 Octombrie 2016</div>
+				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rates[0]->published_on))}}</div>
 				{{-- <div class="panel-body">
 					tabel aci ...
 				</div> --}}
@@ -41,6 +41,10 @@
 						<th>Poimaine</th>
 					</thead>
 					<tbody>
+						@foreach ($rates as $rate)
+						<tr><td>FLAG</td><td>{{$rate->currency}}</td><td>{{$rate->currency}}</td><td>{{$rate->currency}}</td><td>{{$rate->value}}</td><td>-0,0059</td><td>4,4978</td></tr>
+						@endforeach
+						{{-- <tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
@@ -71,8 +75,7 @@
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
 						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
-						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr>
+						<tr><td>FLAG</td><td>EUR</td><td>Euro</td><td>4,4955</td><td>4,5037</td><td>-0,0059</td><td>4,4978</td></tr> --}}
 					</tbody>
 				</table>
 			</div>
