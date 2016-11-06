@@ -23,22 +23,21 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?></div>
-				
+				<div class="panel-body">
+					<pre style="height: 600px;">
+						<?php echo e($rates->toJSON()); ?>
+
+					</pre>
+				</div>
 				<table class="table table-hover">
 					<thead>
 						<th>#</th>
 						<th>Simbol</th>
 						<th>Denumire valuta</th>
 						<th>Azi</th>
-						<th>Maine</th>
-						<th>variatie</th>
-						<th>Poimaine</th>
 					</thead>
 					<tbody>
-						<?php $__currentLoopData = $rates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-						<tr><td>FLAG</td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->currency); ?></td><td><?php echo e($rate->value); ?></td><td>-0,0059</td><td>4,4978</td></tr>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-						
+					
 					</tbody>
 				</table>
 			</div>

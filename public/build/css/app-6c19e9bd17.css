@@ -3994,6 +3994,19 @@ a.thumbnail.active {
 .no-padding {
   padding: 0 !important; }
 
+.flag {
+  display: inline-block;
+  background-color: olive;
+  width: 18px;
+  height: 14px;
+  overflow: hidden; }
+  .flag.eur {
+    background-color: red; }
+  .flag.usd {
+    background-color: black; }
+  .flag.dkk {
+    background-color: gray; }
+
 /* 
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
