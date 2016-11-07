@@ -23,5 +23,12 @@ class RateValue extends Model {
 		}
 		$result = $query->get(["*", $container['db']::raw("FORMAT((`value` * {$currency_multiplier}), 4) AS `converted_value`")]);
 		return $result;
+
+		/*
+			Din moneda care o ai, transformi in RON si dupa imparti la cat 1 din moneda in care vrei valoarea!
+
+			1 eur = 4.48 RON
+			4.48 / 4.04 (VAL OF 1(multiplier) USD IN RON) = 1.10 USD
+		*/
 	}
 }
