@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16be14bdd63d3c8c6fe71319111f2481",
+    "hash": "63923b888485a47133687d89cb25748c",
     "content-hash": "34f26e30f7293afbe7f09863dcef134f",
     "packages": [
         {
@@ -200,12 +200,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "0c5741a1b9b7b1ed75d0694bbf91ede5656be03b"
+                "reference": "baf2062aef27231d22e86e563645b11c186d6807"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/0c5741a1b9b7b1ed75d0694bbf91ede5656be03b",
-                "reference": "0c5741a1b9b7b1ed75d0694bbf91ede5656be03b",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/baf2062aef27231d22e86e563645b11c186d6807",
+                "reference": "baf2062aef27231d22e86e563645b11c186d6807",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +234,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2016-10-28 14:27:40"
+            "time": "2016-11-07 13:57:25"
         },
         {
             "name": "illuminate/database",
@@ -397,12 +397,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "473d06f5dc46308b7d2cd50662e259463d45b383"
+                "reference": "0d953c478f391a2596732fe18d8b6e1e3d6306aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/473d06f5dc46308b7d2cd50662e259463d45b383",
-                "reference": "473d06f5dc46308b7d2cd50662e259463d45b383",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/0d953c478f391a2596732fe18d8b6e1e3d6306aa",
+                "reference": "0d953c478f391a2596732fe18d8b6e1e3d6306aa",
                 "shasum": ""
             },
             "require": {
@@ -446,7 +446,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-11-04 13:46:20"
+            "time": "2016-11-06 23:00:25"
         },
         {
             "name": "illuminate/view",

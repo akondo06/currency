@@ -22,13 +22,8 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?></div>
-				<div class="panel-body">
-					<pre style="height: 600px;">
-						<?php echo e($rates->toJSON()); ?>
-
-					</pre>
-				</div>
+				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?>, raportat la <?php echo e($rate->currency_name); ?> (<?php echo e($rate->currency); ?>)</div>
+				
 				<table class="table table-hover">
 					<thead>
 						<th>#</th>
@@ -37,7 +32,14 @@
 						<th>Azi</th>
 					</thead>
 					<tbody>
-					
+						<?php $__currentLoopData = $rateValues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+							<tr>
+								<td><span class="flag <?php echo e(strtolower($rate->currency)); ?>"></span></td>
+								<td><?php echo e($rate->currency); ?></td>
+								<td><?php echo e($rate->rate->currency_name); ?></td>
+								<td><?php echo e($rate->value); ?></td>
+							</tr>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 					</tbody>
 				</table>
 			</div>
