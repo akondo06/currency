@@ -26,10 +26,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rates[0]->published_on))}}, raportat la {{$rate->currency_name}} ({{$rate->currency}})</div>
+				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rateValues[0]->published_on))}}, raportat la {{$rate->currency_name}} ({{$rate->currency}})</div>
 				{{-- <div class="panel-body">
 					<pre style="height: 600px;">
-						{{$rates->toJSON()}}
+						{{$rateValues->toJSON()}}
 					</pre>
 				</div> --}}
 				<table class="table table-hover">

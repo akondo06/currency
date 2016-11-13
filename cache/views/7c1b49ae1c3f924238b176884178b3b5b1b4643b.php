@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?>, raportat la <?php echo e($rate->currency_name); ?> (<?php echo e($rate->currency); ?>)</div>
+				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rateValues[0]->published_on))); ?>, raportat la <?php echo e($rate->currency_name); ?> (<?php echo e($rate->currency); ?>)</div>
 				
 				<table class="table table-hover">
 					<thead>
