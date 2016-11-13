@@ -38,6 +38,9 @@ $container['db'] = function ($container) {
     return $capsule;
 };
 
+$container['session'] = function ($c) {
+	return new \SlimSession\Helper;
+};
 
 $container[App\Controllers\Home::class] = function($c) {
 	return new \App\Controllers\Home($c);

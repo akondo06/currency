@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "63923b888485a47133687d89cb25748c",
-    "content-hash": "34f26e30f7293afbe7f09863dcef134f",
+    "hash": "8e646ecfedd8ce97fff4a8ba4e8d0a04",
+    "content-hash": "07ca9def1a26ae58c7eda6cf5e21254d",
     "packages": [
+        {
+            "name": "bryanjhv/slim-session",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bryanjhv/slim-session.git",
+                "reference": "df4282d511e953ae9a3ed526e125db27c0ac5af6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bryanjhv/slim-session/zipball/df4282d511e953ae9a3ed526e125db27c0ac5af6",
+                "reference": "df4282d511e953ae9a3ed526e125db27c0ac5af6",
+                "shasum": ""
+            },
+            "require": {
+                "slim/slim": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Horna",
+                    "email": "bryanjhv@gmail.com",
+                    "homepage": "https://bryanjhv.xyz",
+                    "role": "developer"
+                }
+            ],
+            "description": "Session middleware and helper for Slim framework 3.",
+            "homepage": "https://github.com/bryanjhv/slim-session",
+            "keywords": [
+                "helper",
+                "middleware",
+                "session",
+                "slim"
+            ],
+            "time": "2016-06-24 02:35:16"
+        },
         {
             "name": "container-interop/container-interop",
             "version": "1.1.0",
@@ -242,12 +287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "3c1ed9917f18560b2ee8a68d2be7fc337466ac82"
+                "reference": "ac8db0dfbaf156200ced27f558242961a3cc7d78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/3c1ed9917f18560b2ee8a68d2be7fc337466ac82",
-                "reference": "3c1ed9917f18560b2ee8a68d2be7fc337466ac82",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/ac8db0dfbaf156200ced27f558242961a3cc7d78",
+                "reference": "ac8db0dfbaf156200ced27f558242961a3cc7d78",
                 "shasum": ""
             },
             "require": {
@@ -294,7 +339,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2016-11-02 19:49:26"
+            "time": "2016-11-11 14:18:54"
         },
         {
             "name": "illuminate/events",
@@ -347,12 +392,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "1f6af804a7e1b1ee6fb089d32a1a90fe947434d3"
+                "reference": "d23121947acf175a365afedf8f40af44ab994888"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/1f6af804a7e1b1ee6fb089d32a1a90fe947434d3",
-                "reference": "1f6af804a7e1b1ee6fb089d32a1a90fe947434d3",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/d23121947acf175a365afedf8f40af44ab994888",
+                "reference": "d23121947acf175a365afedf8f40af44ab994888",
                 "shasum": ""
             },
             "require": {
@@ -389,7 +434,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2016-09-15 13:52:59"
+            "time": "2016-11-07 22:09:58"
         },
         {
             "name": "illuminate/support",
@@ -454,12 +499,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "c2975f385803d8e8d599640df76673da00e355f1"
+                "reference": "38041e920c641a93dd821877284de5706ebc95cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/c2975f385803d8e8d599640df76673da00e355f1",
-                "reference": "c2975f385803d8e8d599640df76673da00e355f1",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/38041e920c641a93dd821877284de5706ebc95cc",
+                "reference": "38041e920c641a93dd821877284de5706ebc95cc",
                 "shasum": ""
             },
             "require": {
@@ -494,7 +539,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2016-10-26 13:26:49"
+            "time": "2016-11-11 22:28:41"
         },
         {
             "name": "monolog/monolog",
@@ -502,12 +547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "214b8ef34b17ed0fcd3a5e027ef5a9ae9ebeb193"
+                "reference": "2133e01288f8f974645c6548ba1250b5c61d68bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/214b8ef34b17ed0fcd3a5e027ef5a9ae9ebeb193",
-                "reference": "214b8ef34b17ed0fcd3a5e027ef5a9ae9ebeb193",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/2133e01288f8f974645c6548ba1250b5c61d68bc",
+                "reference": "2133e01288f8f974645c6548ba1250b5c61d68bc",
                 "shasum": ""
             },
             "require": {
@@ -572,7 +617,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-10-03 18:31:30"
+            "time": "2016-11-13 19:36:07"
         },
         {
             "name": "nesbot/carbon",
@@ -672,16 +717,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -716,7 +761,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "philo/laravel-blade",

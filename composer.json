@@ -21,7 +21,8 @@
         "slim/php-view": "^2.0",
         "hiropeke/slim-blade-view": "dev-master",
         "monolog/monolog": "^1.17",
-        "illuminate/database": "*"
+        "illuminate/database": "*",
+        "bryanjhv/slim-session": "~3.0"
     },
     "autoload": {
         "psr-4": {
