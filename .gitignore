@@ -3,6 +3,7 @@
 !/logs/README.md
 /vendor
 /node_modules
+/cache/views/*
 Homestead.yaml
 Homestead.json
 .env
