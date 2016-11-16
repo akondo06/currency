@@ -14,8 +14,8 @@ class Rate extends Model {
 		return $this->currency.' ('.$this->currency_name.')';
 	}
 
-	public function todayValue() {
-		return $this->belongsTo('App\Models\RateValue', 'currency', 'currency')->whereDate('published_on', '<=', date('Y-m-d'))->orderBy('published_on', 'desc')->take(1);
+	public function todayValue() { // not correct!
+		return $this->belongsTo('App\Models\RateValue', 'currency', 'currency')->whereDate('published_on', '<=', date('Y-m-d'))->groupBy('currency')->orderBy('published_on', 'desc')->take(1);
 	}
 
 	// public function scopeValues() {
