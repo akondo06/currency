@@ -45,3 +45,8 @@ $container['session'] = function ($c) {
 $container[App\Controllers\Home::class] = function($c) {
 	return new \App\Controllers\Home($c);
 };
+
+
+// define('DB', $container['db']);
+
+

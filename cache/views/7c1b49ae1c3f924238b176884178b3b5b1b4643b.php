@@ -24,7 +24,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rateValues[0]->published_on))); ?>, raportat la <?php echo e($rate->title()); ?></div>
 				<div class="panel-body">
-					
+					<pre style="height: 600px;">
+						<?php echo e($rateValues); ?>
+
+						<?php echo e($queries); ?>
+
+					</pre>
 					<form class="form-inline" method="post">
 						<div class="form-group">
 							<label for="datepicker">Afiseaza curs BNR din data de:</label>
@@ -33,7 +38,7 @@
 						<div class="form-group">
 							<label for="index_currency">raportat la</label>
 							<select name="index_currency" id="index_currency" class="form-control input-sm">
-								<?php $__currentLoopData = \App\Models\Rate::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+								<?php $__currentLoopData = \App\Models\Currency::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 									<?php if($r->currency == $rate->currency): ?>
 										<option label="<?php echo e($r->title()); ?>" value="<?php echo e($r->currency); ?>" selected="selected"><?php echo e($r->title()); ?></option>
 									<?php else: ?>
@@ -55,14 +60,7 @@
 						<th>Azi</th>
 					</thead>
 					<tbody>
-						<?php $__currentLoopData = $rateValues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-							<tr>
-								<td><span class="flag <?php echo e(strtolower($rate->currency)); ?>"></span></td>
-								<td><?php echo e($rate->currency); ?></td>
-								<td><?php echo e($rate->rate->currency_name); ?></td>
-								<td><?php echo e($rate->value); ?></td>
-							</tr>
-						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+						
 					</tbody>
 				</table>
 			</div>

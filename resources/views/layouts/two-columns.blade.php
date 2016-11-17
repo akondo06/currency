@@ -10,7 +10,7 @@
 			<div class="form-group">
 				<label for="convert-from">Transforma din:</label>
 				<select name="convert-from" id="convert-from" class="form-control input-sm">
-					@foreach (\App\Models\Rate::all() as $rate)
+					@foreach (\App\Models\Currency::all() as $rate)
 						@if ($rate->currency == "EUR")
 							<option label="{{$rate->title()}}" value="{{$rate->todayValue->value}}" selected="selected">{{$rate->title()}}</option>
 						@else
@@ -22,7 +22,7 @@
 			<div class="form-group">
 				<label for="convert-to">in:</label> <i class="fa fa-refresh" id="switch"></i>
 				<select name="convert-to" id="convert-to" class="form-control input-sm">
-					@foreach (\App\Models\Rate::all() as $rate)
+					@foreach (\App\Models\Currency::all() as $rate)
 						@if ($rate->currency == "RON")
 							<option label="{{$rate->title()}}" value="{{$rate->todayValue->value}}" selected="selected">{{$rate->title()}}</option>
 						@else

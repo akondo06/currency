@@ -28,9 +28,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rateValues[0]->published_on))}}, raportat la {{$rate->title()}}</div>
 				<div class="panel-body">
-					{{-- <pre style="height: 600px;">
-						{{$rateValues->toJSON()}}
-					</pre> --}}
+					<pre style="height: 600px;">
+						{{$rateValues}}
+						{{$queries}}
+					</pre>
 					<form class="form-inline" method="post">
 						<div class="form-group">
 							<label for="datepicker">Afiseaza curs BNR din data de:</label>
@@ -39,7 +40,7 @@
 						<div class="form-group">
 							<label for="index_currency">raportat la</label>
 							<select name="index_currency" id="index_currency" class="form-control input-sm">
-								@foreach (\App\Models\Rate::all() as $r)
+								@foreach (\App\Models\Currency::all() as $r)
 									@if ($r->currency == $rate->currency)
 										<option label="{{$r->title()}}" value="{{$r->currency}}" selected="selected">{{$r->title()}}</option>
 									@else
@@ -61,14 +62,14 @@
 						<th>Azi</th>
 					</thead>
 					<tbody>
-						@foreach ($rateValues as $rate)
+						{{-- @foreach ($rateValues as $rate)
 							<tr>
 								<td><span class="flag {{strtolower($rate->currency)}}"></span></td>
 								<td>{{$rate->currency}}</td>
 								<td>{{$rate->rate->currency_name}}</td>
 								<td>{{$rate->value}}</td>
 							</tr>
-						@endforeach
+						@endforeach --}}
 					</tbody>
 				</table>
 			</div>

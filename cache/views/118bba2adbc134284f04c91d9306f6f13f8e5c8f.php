@@ -8,7 +8,7 @@
 			<div class="form-group">
 				<label for="convert-from">Transforma din:</label>
 				<select name="convert-from" id="convert-from" class="form-control input-sm">
-					<?php $__currentLoopData = \App\Models\Rate::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+					<?php $__currentLoopData = \App\Models\Currency::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 						<?php if($rate->currency == "EUR"): ?>
 							<option label="<?php echo e($rate->title()); ?>" value="<?php echo e($rate->todayValue->value); ?>" selected="selected"><?php echo e($rate->title()); ?></option>
 						<?php else: ?>
@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<label for="convert-to">in:</label> <i class="fa fa-refresh" id="switch"></i>
 				<select name="convert-to" id="convert-to" class="form-control input-sm">
-					<?php $__currentLoopData = \App\Models\Rate::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+					<?php $__currentLoopData = \App\Models\Currency::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 						<?php if($rate->currency == "RON"): ?>
 							<option label="<?php echo e($rate->title()); ?>" value="<?php echo e($rate->todayValue->value); ?>" selected="selected"><?php echo e($rate->title()); ?></option>
 						<?php else: ?>
