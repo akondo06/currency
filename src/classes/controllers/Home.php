@@ -40,16 +40,6 @@ class Home extends \App\Controllers\Base {
 		$args['index_date'] = $session->get('index_date');
 		$args['index_currency'] = $session->get('index_currency');
 
-		// $index_date = new \DateTime($args['index_date']);
-		// $index_date_final = $index_date->format('Y-m-d');
-
-		// while((date('N', strtotime($index_date_final)) >= 6)) {
-		// 	$index_date->sub(\DateInterval::createFromDateString('1 day'));
-		// 	$index_date_final = $index_date->format('Y-m-d');
-		// }
-
-		// $index_date = $index_date_final;
-
 		$args['que'] = json_encode($args);
 
 		$index_currency = $session->get('index_currency');
