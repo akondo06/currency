@@ -50,12 +50,11 @@ class Home extends \App\Controllers\Base {
 
 		// $index_date = $index_date_final;
 
+		$args['que'] = json_encode($args);
 
-		$base_rate = $session->get('index_currency');
-		$args['rate'] = Currency::where('currency', $base_rate)->first();
-		// $args['rateValues'] = Rate::whereDate('published_on', '<=', $args['index_date'])->groupBy('currency')->orderBy('published_on', 'desc')->getEquivalentValue($base_rate, 1, null, [$base_rate]);
-		// $args['rateValues'] = Rate::getEquivalentValue($base_rate, 1, null, [$base_rate]);
-		$args['queries'] = Rate::onDate('2016-11-17')->getEquivalentValue('RON', 1, null, ['RON'])->toSql();
+		$index_currency = $session->get('index_currency');
+		$args['currency'] = Currency::where('currency', $index_currency)->first();
+		$args['rates'] = Rate::onDate($args['index_date'])->orderBy('currency', 'desc')->getEquivalentValues($index_currency, 1, null, [$index_currency]);
 
 		// Render index view
 		return $this->renderer->render($response, 'home', $args);

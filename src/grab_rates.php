@@ -33,6 +33,7 @@ foreach($xml->Body->Cube as $xmlDay) {
 		}
 		$day->rates[] = (object) ['currency' => $currency, 'value' => $value, 'multiplier' => $multiplier];
 	}
+	$day->rates[] = (object) ['currency' => 'RON', 'value' => 1, 'multiplier' => 1];
 	$days[] = $day;
 }
 
@@ -51,17 +52,14 @@ if($db == null) {
 
 $mysqli = new mysqli($db->host, $db->username, $db->password, $db->database);
 if($mysqli->connect_errno) {
-    echo "Error: Failed to make a MySQL connection, here is why: \n";
-    echo "Errno: " . $mysqli->connect_errno . "\n";
-    echo "Error: " . $mysqli->connect_error . "\n";
-    exit;
+	echo "Error: Failed to make a MySQL connection, here is why: \n";
+	echo "Errno: " . $mysqli->connect_errno . "\n";
+	echo "Error: " . $mysqli->connect_error . "\n";
+	exit;
 }
 
-// $result = $mysqli->query($sql)
-
 foreach($days as $day) {
-	// echo "Inserting Day {$day->date}:\n";
-	$statement = "INSERT IGNORE INTO `rate_values`(`published_on`, `currency`, `value`) VALUES";
+	$statement = "INSERT IGNORE INTO `rates`(`published_on`, `currency`, `value`) VALUES";
 	$values = [];
 	foreach($day->rates as $rate) {
 		$values[] = "('{$day->date}', '{$rate->currency}', '{$rate->value}')";

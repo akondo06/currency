@@ -10,8 +10,8 @@ class Rate extends Model {
 
 	protected $fillable = ['published_on', 'currency', 'value'];
 
-	public function currency() {
-		return $this->BelongsTo('App\Models\Currency', 'currency', 'currency');
+	public function currencyObj() {
+		return $this->belongsTo('App\Models\Currency', 'currency', 'currency');
 	}
 
 	private function lastWeekDay($date = null) {
@@ -27,23 +27,21 @@ class Rate extends Model {
 	}
 
 	public function scopeOnDate($query, $date = null) {
-		global $container;
-		return $query->where($container['db']::raw("DATE(created_at) = '".date('Y-m-d')."'"));
+		return $query->whereDate('published_on', '=', $date);
 	}
 
-	public function scopeGetEquivalentValue($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null) {
+	public function scopeGetEquivalentValues($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null) {
 		global $container;
-		$base_currency = $this->whereCurrency($base_currency)->first();
-		$currency_multiplier = $amount * $base_currency->value;
-		
 		if($filter_currencies != null) {
 			$query->whereIn('currency', $filter_currencies);
 		}
 		if($exclude_currencies != null) {
 			$query->whereNotIn('currency', $exclude_currencies);
 		}
-		return $query;
 		
+		$base_currency = $this->whereCurrency($base_currency)->first();
+		$currency_multiplier = $amount * $base_currency->value;
+
 		return $query->get(["*", $container['db']::raw("FORMAT(({$currency_multiplier} / `value`), 4) AS `converted_value`")]);
 		/* Might not be accurate with the currencies that have a different multiplier than 1 ... like JPY check that! */
 		/*
