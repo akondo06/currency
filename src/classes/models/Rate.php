@@ -14,6 +14,22 @@ class Rate extends Model {
 		return $this->belongsTo('App\Models\Currency', 'currency', 'currency');
 	}
 
+	public function variation() {
+		$value = $this->converted_value ? $this->converted_value : $this->value;
+		$yesterday = $this->yesterday ? $this->yesterday : null;
+		if(!$yesterday) {
+			return 0;
+		}
+		$yesterday_value = $this->yesterday->converted_value ? $this->yesterday->converted_value : $this->yesteday->value;
+		$result = $value - $yesterday_value;
+
+		$positive = '';
+		if($result > 0) {
+			$positive = "+";
+		}
+		return $positive.number_format($value - $yesterday_value, 4);
+	}
+
 	private function lastWeekDay($date = null) {
 		$date = new \DateTime($date);
 		$date_final = $date->format('Y-m-d');
@@ -27,7 +43,7 @@ class Rate extends Model {
 	}
 
 	public function scopeOnDate($query, $date = null) {
-		return $query->whereDate('published_on', '=', $date);
+		return $query->whereDate($this->table.'.published_on', '=', $this->lastWeekDay($date))->orderBy('currency', 'desc');
 	}
 
 	public function scopeGetEquivalentValues($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null) {
@@ -35,15 +51,15 @@ class Rate extends Model {
 		if($filter_currencies != null) {
 			$query->whereIn('currency', $filter_currencies);
 		}
-		if($exclude_currencies != null) {
-			$query->whereNotIn('currency', $exclude_currencies);
+		if(!$exclude_currencies) {
+			$exclude_currencies = [$base_currency];
 		}
-		
+		$query->whereNotIn('currency', $exclude_currencies);
+
 		$base_currency = $this->whereCurrency($base_currency)->first();
 		$currency_multiplier = $amount * $base_currency->value;
 
 		return $query->get(["*", $container['db']::raw("FORMAT(({$currency_multiplier} / `value`), 4) AS `converted_value`")]);
-		/* Might not be accurate with the currencies that have a different multiplier than 1 ... like JPY check that! */
 		/*
 			Din moneda care o ai, transformi in RON si dupa imparti la cat 1 din moneda in care vrei valoarea!
 

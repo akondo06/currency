@@ -24,10 +24,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?>, raportat la <?php echo e($currency->title()); ?></div>
 				<div class="panel-body">
-					<pre style="height: 600px;">
-						<?php echo e($que); ?>
-
-					</pre>
+					
 					<form class="form-inline" method="post">
 						<div class="form-group">
 							<label for="datepicker">Afiseaza curs BNR din data de:</label>
@@ -55,7 +52,10 @@
 						<th>#</th>
 						<th>Simbol</th>
 						<th>Denumire valuta</th>
-						<th>Azi</th>
+						<th><?php echo e($rates[0]->two_days_before->published_on); ?></th>
+						<th><?php echo e($rates[0]->yesterday->published_on); ?></th>
+						<th>Variatie</th>
+						<th><?php echo e($rates[0]->published_on); ?></th>
 					</thead>
 					<tbody>
 						<?php $__currentLoopData = $rates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
@@ -63,6 +63,9 @@
 								<td><span class="flag <?php echo e(strtolower($rate->currency)); ?>"></span></td>
 								<td><?php echo e($rate->currency); ?></td>
 								<td><?php echo e($rate->currencyObj->name); ?></td>
+								<td><?php echo e($rate->two_days_before->converted_value); ?></td>
+								<td><?php echo e($rate->yesterday->converted_value); ?></td>
+								<td><?php echo e($rate->variation()); ?></td>
 								<td><?php echo e($rate->converted_value); ?></td>
 							</tr>
 						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>

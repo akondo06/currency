@@ -28,9 +28,9 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rates[0]->published_on))}}, raportat la {{$currency->title()}}</div>
 				<div class="panel-body">
-					<pre style="height: 600px;">
+					{{-- <pre style="height: 100px;">
 						{{$que}}
-					</pre>
+					</pre> --}}
 					<form class="form-inline" method="post">
 						<div class="form-group">
 							<label for="datepicker">Afiseaza curs BNR din data de:</label>
@@ -58,7 +58,10 @@
 						<th>#</th>
 						<th>Simbol</th>
 						<th>Denumire valuta</th>
-						<th>Azi</th>
+						<th>{{$rates[0]->two_days_before->published_on}}</th>
+						<th>{{$rates[0]->yesterday->published_on}}</th>
+						<th>Variatie</th>
+						<th>{{$rates[0]->published_on}}</th>
 					</thead>
 					<tbody>
 						@foreach ($rates as $rate)
@@ -66,6 +69,9 @@
 								<td><span class="flag {{strtolower($rate->currency)}}"></span></td>
 								<td>{{$rate->currency}}</td>
 								<td>{{$rate->currencyObj->name}}</td>
+								<td>{{$rate->two_days_before->converted_value}}</td>
+								<td>{{$rate->yesterday->converted_value}}</td>
+								<td>{{$rate->variation()}}</td>
 								<td>{{$rate->converted_value}}</td>
 							</tr>
 						@endforeach

@@ -9,12 +9,6 @@ class Home extends \App\Controllers\Base {
 	public function index($request, $response, $args) {
 		// Sample log message
 		$this->logger->info('Slim-Skeleton \'/\' route');
-
-		// $args['rates'] = Currency::where('currency', 'RON')->get()->values();
-		// $args['rates'] = Rate::where('published_on', '2016-11-04')->get();
-		// $args['rates'] = Rate::getEquivalentValue('RON', 4, ['EUR', 'USD', 'RON', 'DKK']);  // DIN RO in EUR, USD, RON, DKK ... 
-		// $args['rates'] = Rate::getEquivalentValue('EUR', 1, ['EUR', 'USD', 'RON', 'DKK']); // DIN EUR in RO
-
 		$session = $this->session;
 
 		// Homepage table data here ...
@@ -29,22 +23,35 @@ class Home extends \App\Controllers\Base {
 			}
 		}
 
-
-		if($session->get('index_date') == null) {
+		if(!$session->get('index_date')) {
 			$session->set('index_date', date('Y-m-d'));
 		}
-		if($session->get('index_currency') == null) {
+		if(!$session->get('index_currency')) {
 			$session->set('index_currency', 'RON');
 		}
 
 		$args['index_date'] = $session->get('index_date');
 		$args['index_currency'] = $session->get('index_currency');
 
-		$args['que'] = json_encode($args);
-
 		$index_currency = $session->get('index_currency');
 		$args['currency'] = Currency::where('currency', $index_currency)->first();
-		$args['rates'] = Rate::onDate($args['index_date'])->orderBy('currency', 'desc')->getEquivalentValues($index_currency, 1, null, [$index_currency]);
+
+
+		$rates = Rate::onDate($args['index_date'])->getEquivalentValues($index_currency, 1);
+		
+		$date_yesterday = new \DateTime($rates[0]->published_on);
+		$date_yesterday = $date_yesterday->sub(\DateInterval::createFromDateString('1 day'));
+		$rates_yesterday = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1);
+		$date_yesterday = $date_yesterday->sub(\DateInterval::createFromDateString('1 day'));
+		$rates_two_days_before = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1);
+
+		foreach($rates as $index => $rate) {
+			$rate->yesterday = $rates_yesterday[$index];
+			$rate->two_days_before = $rates_two_days_before[$index];
+		}
+
+
+		$args['rates'] = $rates;
 
 		// Render index view
 		return $this->renderer->render($response, 'home', $args);
