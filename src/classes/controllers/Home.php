@@ -37,13 +37,13 @@ class Home extends \App\Controllers\Base {
 		$args['currency'] = Currency::where('currency', $index_currency)->first();
 
 
-		$rates = Rate::onDate($args['index_date'])->getEquivalentValues($index_currency, 1);
+		$rates = Rate::onDate($args['index_date'])->getEquivalentValues($index_currency, 1, null, null, true);
 		
 		$date_yesterday = new \DateTime($rates[0]->published_on);
 		$date_yesterday = $date_yesterday->sub(\DateInterval::createFromDateString('1 day'));
-		$rates_yesterday = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1);
+		$rates_yesterday = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1, null, null, true);
 		$date_yesterday = $date_yesterday->sub(\DateInterval::createFromDateString('1 day'));
-		$rates_two_days_before = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1);
+		$rates_two_days_before = Rate::onDate($date_yesterday->format('Y-m-d'))->getEquivalentValues($index_currency, 1, null, null, true);
 
 		foreach($rates as $index => $rate) {
 			$rate->yesterday = $rates_yesterday[$index];

@@ -29,7 +29,7 @@
 				}
 			}
 
-			if(typeof convertedValue !== 'number') {
+			if(typeof convertedValue !== 'number' || isNaN(convertedValue)) {
 				convertedValue = 0;
 			}
 			if(convertedValue.toPrecision) {

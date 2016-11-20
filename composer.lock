@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8e646ecfedd8ce97fff4a8ba4e8d0a04",
+    "hash": "7b6b48ac994cb1410122d30218516656",
     "content-hash": "07ca9def1a26ae58c7eda6cf5e21254d",
     "packages": [
         {
@@ -1002,12 +1002,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim.git",
-                "reference": "66ff172e22ce024b1e144509797dc04575b1671e"
+                "reference": "686bfc27ccb5e4c8a4661f5ccf500227f031d78a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/66ff172e22ce024b1e144509797dc04575b1671e",
-                "reference": "66ff172e22ce024b1e144509797dc04575b1671e",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/686bfc27ccb5e4c8a4661f5ccf500227f031d78a",
+                "reference": "686bfc27ccb5e4c8a4661f5ccf500227f031d78a",
                 "shasum": ""
             },
             "require": {
@@ -1064,7 +1064,7 @@
                 "micro",
                 "router"
             ],
-            "time": "2016-11-18 11:48:10"
+            "time": "2016-11-20 20:50:19"
         },
         {
             "name": "symfony/debug",
@@ -1072,12 +1072,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231"
+                "reference": "6a4b5ee6a705a8975aa4d6c0ff0ecf830c6e677c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
-                "reference": "9f923e68d524a3095c5a2ae5fc7220c7cbc12231",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/6a4b5ee6a705a8975aa4d6c0ff0ecf830c6e677c",
+                "reference": "6a4b5ee6a705a8975aa4d6c0ff0ecf830c6e677c",
                 "shasum": ""
             },
             "require": {
@@ -1121,7 +1121,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-16 22:18:16"
+            "time": "2016-11-03 08:11:03"
         },
         {
             "name": "symfony/finder",

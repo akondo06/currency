@@ -30,23 +30,15 @@ class Rate extends Model {
 		return $positive.number_format($value - $yesterday_value, 4);
 	}
 
-	private function lastWeekDay($date = null) {
-		$date = new \DateTime($date);
-		$date_final = $date->format('Y-m-d');
-
-		while((date('N', strtotime($date_final)) >= 6)) {
-			$date->sub(\DateInterval::createFromDateString('1 day'));
-			$date_final = $date->format('Y-m-d');
-		}
-
-		return $date_final;
-	}
-
 	public function scopeOnDate($query, $date = null) {
-		return $query->whereDate($this->table.'.published_on', '=', $this->lastWeekDay($date))->orderBy('currency', 'desc');
+		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->orderBy('currency', 'desc')->groupBy('currency');
 	}
 
-	public function scopeGetEquivalentValues($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null) {
+	/*
+		Given the amount 1 and RON as base currency, when reverse = true:
+			Gets the value of amount in RON of each currency
+	*/
+	public function scopeGetEquivalentValues($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null, $reverse = false) {
 		global $container;
 		if($filter_currencies != null) {
 			$query->whereIn('currency', $filter_currencies);
@@ -59,7 +51,12 @@ class Rate extends Model {
 		$base_currency = $this->whereCurrency($base_currency)->first();
 		$currency_multiplier = $amount * $base_currency->value;
 
-		return $query->get(["*", $container['db']::raw("FORMAT(({$currency_multiplier} / `value`), 4) AS `converted_value`")]);
+		$operation = "{$currency_multiplier} / `value`";
+		if($reverse) {
+			$operation = "`value` / {$currency_multiplier}";
+		} 
+
+		return $query->get(["*", $container['db']::raw("FORMAT(({$operation}), 4) AS `converted_value`")]);
 		/*
 			Din moneda care o ai, transformi in RON si dupa imparti la cat 1 din moneda in care vrei valoarea!
 

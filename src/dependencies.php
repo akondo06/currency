@@ -25,7 +25,11 @@ $container['logger'] = function($c) {
 };
 
 // Load Helpers here ....
-require __DIR__ . '/classes/helpers/urlFor.php';
+// require __DIR__ . '/classes/helpers/urlFor.php';
+// require __DIR__ . '/classes/helpers/previousWeekDay.php';
+foreach (glob( __DIR__ . "/classes/helpers/*.php") as $filename) {
+    require $filename;
+}
 
 // db
 $container['db'] = function ($container) {

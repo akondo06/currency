@@ -3,7 +3,7 @@
 		<div class="panel-heading">Convertor Rapid</div>
 		<div class="panel-body">
 			<form class="fast-converter">
-			<p>Calculeaza conform <b>cursului valutar BNR</b> din <b><?php echo e(date('d F Y')); ?></b>:</p>
+			<p>Calculeaza conform <b>cursului valutar BNR</b> din <b><?php echo e(previousWeekDay(date('Y-m-d'), 'd F Y')); ?></b>:</p>
 
 			<div class="form-group">
 				<label for="convert-from">Transforma din:</label>
