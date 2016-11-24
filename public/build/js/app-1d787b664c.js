@@ -178,8 +178,12 @@ function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
 
 (function($) {
 	$(document).ready(function() {
-		loadChart(1, 'EUR', chartColors.chart1, '2016-08-24', '2016-11-24');
-		loadChart(2, 'USD', chartColors.chart2, '2016-08-24', '2016-11-24');
+		var today = new Date();
+		var threeMonthsAgo = new Date(today);
+		threeMonthsAgo.setDate(threeMonthsAgo.getDate() - 90);
+		
+		loadChart(1, 'EUR', chartColors.chart1, threeMonthsAgo, today);
+		loadChart(2, 'USD', chartColors.chart2, threeMonthsAgo, today);
 
 		$('.currencies-dropdown .dropdown-menu li a').on('click', function(t) {
 			var currency = $(this).attr('data-currency');
@@ -187,7 +191,7 @@ function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
 			var chart = $main.attr('data-chart');
 			if(currency && chart) {
 				$('.chart-'+chart+'-currency').text(currency);
-				loadChart(chart, currency, chartColors['chart'+chart], '2016-08-24', '2016-11-24');
+				loadChart(chart, currency, chartColors['chart'+chart], threeMonthsAgo, today);
 			}
 		});
 	});
