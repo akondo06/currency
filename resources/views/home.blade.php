@@ -4,21 +4,19 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div class="panel panel-default">
-				<div class="panel-heading">Grafic evolutie curs EUR din ultimele 3 luni</div>
-				<div class="panel-body no-padding" id="chartdiv">
-					{{-- GRAF ACI <br />
-					https://www.amcharts.com/demos/zoomable-value-axis/ <br />
-					http://www.curs-valutar-bnr.ro/ --}}
+				<div class="panel-heading">Grafic evolutie curs <span class="chart-1-currency">EUR</span> din ultimele 3 luni</div>
+				<div class="panel-body no-padding">
+					@include('components.currencies-dropdown', ['chart' => 1])
+					<div class="chart-container" id="chart1"></div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="panel panel-default">
-				<div class="panel-heading">Grafic evolutie curs USD din ultimele 3 luni</div>
-				<div class="panel-body">
-					GRAF ACI <br />
-					https://www.amcharts.com/demos/zoomable-value-axis/ <br />
-					http://www.curs-valutar-bnr.ro/
+				<div class="panel-heading">Grafic evolutie curs <span class="chart-2-currency">USD</span> din ultimele 3 luni</div>
+				<div class="panel-body no-padding">
+					@include('components.currencies-dropdown', ['chart' => 2])
+					<div class="chart-container" id="chart2"></div>
 				</div>
 			</div>
 		</div>

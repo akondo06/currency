@@ -6,6 +6,9 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 		<link href="{{ trim(elixir('css/app.css'), '/') }}" rel="stylesheet" type="text/css" />
+		<script type="text/javascript">
+			var homeUrl = '{{homeURL()}}';
+		</script>
 		@yield('head')
 	</head>
 	<body>
@@ -22,6 +25,7 @@
 		<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 		<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 		<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
 		<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
 		@yield('scripts')

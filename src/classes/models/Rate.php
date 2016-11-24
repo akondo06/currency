@@ -34,6 +34,13 @@ class Rate extends Model {
 		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->orderBy('currency', 'desc')->groupBy('currency');
 	}
 
+	public function scopeBetweenDates($query, $start_date = null, $end_date = null) {
+		return $query
+			->whereDate('published_on', '>=', previousWeekDay($start_date))
+			->whereDate('published_on', '<=', previousWeekDay($end_date))
+			->orderBy('published_on', 'asc');
+	}
+
 	/*
 		Given the amount 1 and RON as base currency, when reverse = true:
 			Gets the value of amount in RON of each currency

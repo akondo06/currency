@@ -18,6 +18,10 @@ class Currency extends Model {
 		return $this->belongsTo('App\Models\Rate', 'currency', 'currency')->onDate(previousWeekDay(date('Y-m-d')))->take(1);
 	}
 
+	public function scopeExcludeBase($query) {
+		return $query->whereNotIn('currency', ['RON']);
+	}
+
 	// public function values() {
 	// 	return $this->hasMany('App\Models\Rate', 'currency', 'currency')
 	// 			->where('currency', $this->currency)

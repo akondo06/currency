@@ -1,0 +1,10 @@
+/* 
+	Should contain styles that apply to the component itself 
+	and no changes to the components that it will include! 
+*/
+
+.chart-container { width: 100%; height: 220px;
+	.amcharts-chart-div {
+		a { display: none!important; }
+	}
+}
