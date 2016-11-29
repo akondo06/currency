@@ -8,6 +8,12 @@
 		<link href="<?php echo e(trim(elixir('css/app.css'), '/')); ?>" rel="stylesheet" type="text/css" />
 		<script type="text/javascript">
 			var homeUrl = '<?php echo e(homeURL()); ?>';
+			var currencies = {
+				<?php $__currentLoopData = \App\Models\Currency::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+					<?php echo e($c->currency); ?>: '<?php echo e($c->currency); ?> - <?php echo e($c->name); ?>',
+				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+			};
+			var baseCurrency = 'RON';
 		</script>
 		<?php echo $__env->yieldContent('head'); ?>
 	</head>

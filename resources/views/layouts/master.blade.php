@@ -8,6 +8,12 @@
 		<link href="{{ trim(elixir('css/app.css'), '/') }}" rel="stylesheet" type="text/css" />
 		<script type="text/javascript">
 			var homeUrl = '{{homeURL()}}';
+			var currencies = {
+				@foreach (\App\Models\Currency::all() as $c)
+					{{$c->currency}}: '{{$c->currency}} - {{$c->name}}',
+				@endforeach
+			};
+			var baseCurrency = 'RON';
 		</script>
 		@yield('head')
 	</head>

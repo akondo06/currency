@@ -9,11 +9,23 @@ class ChartData extends \App\Controllers\Base {
 	public function index($request, $response, $args) {
 		// Needs some validation here .. check if it's higher than today .. etc...
 		$currency = $args['currency'];
-		$base_currency = $args['base_currency'];
-		$start_date = new \DateTime($args['start_date']);
-		$start_date = $start_date->format('Y-m-d');
-		$end_date = new \DateTime($args['end_date']);
-		$end_date = $end_date->format('Y-m-d');
+		$base_currency = array_key_exists('base_currency', $args) ? $args['base_currency'] : 'RON';
+
+		$base_currency = 'RON';
+		if(array_key_exists('base_currency', $args)) {
+			$base_currency = $args['base_currency'];
+		}
+		
+		$start_date = '2005-01-01';
+		if(array_key_exists('start_date', $args)) {
+			$start_date = new \DateTime($start_date);
+			$start_date = $start_date->format('Y-m-d');
+		}
+		$end_date = date('Y-m-d');
+		if(array_key_exists('end_date', $args)) {
+			$end_date = new \DateTime($end_date);
+			$end_date = $end_date->format('Y-m-d');
+		}
 
 		$rates = Rate::
 			betweenDates($start_date, $end_date)

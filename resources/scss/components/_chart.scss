@@ -3,8 +3,11 @@
 	and no changes to the components that it will include! 
 */
 
-.chart-container { width: 100%; height: 220px;
+.chart-container { width: 100%;
 	.amcharts-chart-div {
 		a { display: none!important; }
 	}
+
+	&.small { height: 220px; }
+	&.stock { height: 600px; }
 }

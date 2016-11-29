@@ -1,3 +1,5 @@
+
+/* Fast Converted */
 (function($) {
 	$(document).ready(function() {
 		$('.fast-converter #switch').click(function(event) {
@@ -40,43 +42,49 @@
 	});
 })(jQuery);
 
+/* Charts */
+var chartColors = {
+	chart1: '#c1c106',
+	chart2: '#ff0000'
+};
+
 AmCharts.translations.ro = {
-	"monthNames": ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"],
-	"shortMonthNames": ["Ian", "Feb", "Mar", "Apr", "Mai", "Iun", "Iul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-	"dayNames": ["Duminică", "Luni", "Marţi", "Miercuri", "Joi", "Vineri", "Sâmbătă"],
-	"shortDayNames": ["Du", "Lu", "Ma", "Mi", "Jo", "Vi", "Sb"],
-	"zoomOutText": "Arată tot"
+	'monthNames': ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
+	'shortMonthNames': ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun', 'Iul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	'dayNames': ['Duminică', 'Luni', 'Marţi', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'],
+	'shortDayNames': ['Du', 'Lu', 'Ma', 'Mi', 'Jo', 'Vi', 'Sb'],
+	'zoomOutText': 'Arată tot'
 };
 AmCharts.translations.dataLoader.ro = {
 	'Error loading the file': 'Eroare la incarcarea fisierului',
 	'Error parsing JSON file': 'Eroarea la parsarea fisierului JSON',
 	'Unsupported data format': 'Formatul de date nu este suportat',
-	'Loading data...': 'Se incarca datele...'
+	'Loading data...': 'Se incarca...'
 };
 AmCharts.translations['export']['ro'] = {
-	"fallback.save.text": "CTRL + C pentru a copia datele in clipboard",
-	"fallback.save.image": "Rightclick -> Descarca imagine... pentru a salva imaginea.",
-	"capturing.delayed.menu.label": "{{duration}}",
-	"capturing.delayed.menu.title": "Click pentru anulare",
-	"menu.label.print": "Tipareste",
-	"menu.label.undo": "Revers la modificare",
-	"menu.label.redo": "Revino la modificare",
-	"menu.label.cancel": "Anuleaza",
-	"menu.label.save.image": "Descarca ...",
-	"menu.label.save.data": "Salveaza ...",
-	"menu.label.draw": "Adnoteaza...",
-	"menu.label.draw.change": "Schimba ...",
-	"menu.label.draw.add": "Adauga ...",
-	"menu.label.draw.shapes": "Forma ...",
-	"menu.label.draw.colors": "Culoare ...",
-	"menu.label.draw.widths": "Marime ...",
-	"menu.label.draw.opacities": "Opacitate ...",
-	"menu.label.draw.text": "Text",
-	"menu.label.draw.modes": "Mod ...",
-	"menu.label.draw.modes.pencil": "Creion",
-	"menu.label.draw.modes.line": "Linie",
-	"menu.label.draw.modes.arrow": "Sageata",
-	"label.saved.from": "Salvat de la: "
+	'fallback.save.text': 'CTRL + C pentru a copia datele in clipboard',
+	'fallback.save.image': 'Click Dreapta -> Descarca imagine... pentru a salva imaginea.',
+	'capturing.delayed.menu.label': '{{duration}}',
+	'capturing.delayed.menu.title': 'Click pentru anulare',
+	'menu.label.print': 'Printează',
+	'menu.label.undo': 'Revers la modificare',
+	'menu.label.redo': 'Revino la modificare',
+	'menu.label.cancel': 'Anulează',
+	'menu.label.save.image': 'Descarcă ...',
+	'menu.label.save.data': 'Salvează ...',
+	'menu.label.draw': 'Adnoteaza...',
+	'menu.label.draw.change': 'Schimbă ...',
+	'menu.label.draw.add': 'Adaugă ...',
+	'menu.label.draw.shapes': 'Forme ...',
+	'menu.label.draw.colors': 'Culoari ...',
+	'menu.label.draw.widths': 'Marimi ...',
+	'menu.label.draw.opacities': 'Opacitate ...',
+	'menu.label.draw.text': 'Text',
+	'menu.label.draw.modes': 'Mod ...',
+	'menu.label.draw.modes.pencil': 'Creion',
+	'menu.label.draw.modes.line': 'Linie',
+	'menu.label.draw.modes.arrow': 'Sageată',
+	'label.saved.from': 'Salvat de la: '
 };
 
 var chart_vars = {
@@ -86,7 +94,7 @@ var chart_vars = {
 	marginTop: 10,
 	marginLeft: 15,
 	marginRight: 20,
-	colors: ['#ff0000'],
+	colors: [chartColors.chart1],
 	dataDateFormat: 'YYYY-MM-DD',
 	valueAxes: [ {
 		id: 'v1',
@@ -120,14 +128,9 @@ var chart_vars = {
 		showErrors: true,
 		async: true,
 		complete: function() {
-			console.log('yep.. data e acolo ...');
+			// console.log('yep.. data e acolo ...');
 		}
 	}
-};
-
-var chartColors = {
-	chart1: '#c1c106',
-	chart2: '#ff0000'
 };
 
 function toURLDate(date) {
@@ -135,6 +138,17 @@ function toURLDate(date) {
 		date = date.toISOString();
 	}
 	return date.split('T')[0];
+}
+
+function dataUrl(currency, baseCurrency, startDate, endDate) {
+	var result = homeUrl + '/json/' + currency;
+	if(baseCurrency) {
+		result += '/' + baseCurrency;
+	}
+	if(startDate && endDate) {
+		result += '/'+toURLDate(startDate)+'/'+toURLDate(endDate);
+	}
+	return result;
 }
 
 function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
@@ -151,7 +165,7 @@ function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
 		baseCurrency = 'RON';
 	}
 	opts.colors = [color];
-	opts.dataLoader.url = homeUrl + '/json/'+currency+'/'+baseCurrency+'/'+toURLDate(startDate)+'/'+toURLDate(endDate);
+	opts.dataLoader.url = dataUrl(currency, baseCurrency, startDate, endDate);
 
 	opts.addClassNames = true;
 	opts.graphs[0].balloonText = '<div style="margin:5px; font-size:12px;">' + multiplier + ' ' + currency + ' = <b>[[value]]</b> ' + baseCurrency + '</div>';
@@ -167,6 +181,138 @@ function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
 	};
 	opts.categoryAxis.parseDates = true;
 	AmCharts.makeChart('chart' + chartId, opts);
+}
+
+function chartStock(chartId) {
+	var chartContainer = $('#' + chartId);
+	if(chartContainer.length > 0) {
+		var dataSets = [];
+		var defaultCurrency = chartContainer.attr('data-currency');
+		var defaultCurrencyTitle = currencies[defaultCurrency];
+		dataSets.push({
+			title: defaultCurrencyTitle,
+			currency: defaultCurrency,
+			dataProvider: [],
+			dataLoader: {},
+			categoryField: 'date',
+			fieldMappings: [{
+				fromField: 'value',
+				toField: 'value'
+			}]
+		});
+		$.each(currencies, function(currency, currencyTitle) {
+			if(currency !== defaultCurrency && currency !== baseCurrency) {
+				dataSets.push({
+					title: currencyTitle,
+					currency: currency,
+					dataProvider: [],
+					dataLoader: {},
+					categoryField: 'date',
+					fieldMappings: [{
+						fromField: 'value',
+						toField: 'value'
+					}]
+				});
+			}
+		});
+		dataSets[0].dataLoader.url = dataUrl(defaultCurrency);
+		dataSets[0].dataLoader.format = 'json';
+		dataSets[0].color = '#' + chartColors.chart1;
+
+		var chart = AmCharts.makeChart(chartId, {
+			type: 'stock',
+			theme: 'light',
+			language: 'ro',
+			dataSets: dataSets,
+			dataDateFormat: 'YYYY-MM-DD',
+			chartScrollbarSettings: {
+				graph: 'g1',
+				position: 'bottom'
+			},
+			panels: [{
+				showCategoryAxis: !0,
+				title: 'Value',
+				percentHeight: 70,
+				stockGraphs: [{
+					id: 'g1',
+					valueField: 'value',
+					comparable: !0,
+					compareField: 'value',
+					bullet: 'round',
+					compareGraphBullet: 'round',
+					fillAlphas: .5,
+					compareGraphFillAlphas: .4,
+					balloonText: '[[title]]: <strong>[[value]]</strong> ' + baseCurrency,
+					compareGraphBalloonText: '[[title]]: <strong>[[value]]</strong> ' + baseCurrency
+				}],
+				stockLegend: {
+					periodValueTextComparing: '[[percents.value.close]]%',
+					periodValueTextRegular: '[[value.close]]'
+				}
+			}],
+			categoryField: 'date',
+			periodSelector: {
+				position: 'left',
+				fromText: 'Perioada:',
+				toText: '',
+				periodsText: 'Zoom:',
+				periods: [{
+					period: 'MM',
+					count: 1,
+					label: '1 lună'
+				}, {
+					period: 'MM',
+					selected: !0,
+					count: 3,
+					label: '3 luni'
+				}, {
+					period: 'MM',
+					count: 6,
+					label: '6 luni'
+				}, {
+					period: 'YYYY',
+					count: 1,
+					label: '1 an'
+				}, {
+					period: 'YTD',
+					label: 'An curent'
+				}, {
+					period: 'MAX',
+					label: 'Tot'
+				}]
+			},
+			chartCursorSettings: {
+				valueBalloonsEnabled: !0,
+				fullWidth: !0,
+				cursorAlpha: .1,
+				cursorColor: '#000',
+				color: '#fff'
+			},
+			dataSetSelector: {
+				position: 'left',
+				width: 180,
+				listHeight: 130,
+				selectText: 'Valuta:',
+				compareText: 'Compară cu:'
+			}
+		});
+		chart.addListener('rendered', function(data) {
+			function loadCurrencyData(data) {
+				$.ajax({
+					type: 'GET',
+					url: dataUrl(data.dataSet.currency),
+					cache: false,
+					dataType: 'json',
+					success: function(response) {
+						data.dataSet.dataProvider = response;
+						data.chart.validateData();
+					}
+				});
+			}
+			data.chart.dataSetSelector.addListener('dataSetCompared', loadCurrencyData);
+			data.chart.dataSetSelector.addListener('dataSetSelected', loadCurrencyData);
+		});
+	}
 }
 
 // function setChartDataSet(chart, dataset_url) {
@@ -194,5 +340,7 @@ function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
 				loadChart(chart, currency, chartColors['chart'+chart], threeMonthsAgo, today);
 			}
 		});
+
+		chartStock('chart-currency-evolution');
 	});
 })(jQuery);

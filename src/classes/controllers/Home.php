@@ -60,4 +60,8 @@ class Home extends \App\Controllers\Base {
 	public function page($request, $response, $args) {
 		return $this->renderer->render($response, 'page', $args);
 	}
+
+	public function currencyEvolution($request, $response, $args) {
+		return $this->renderer->render($response, 'currency-evolution', $args);
+	}
 }

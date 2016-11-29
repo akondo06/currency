@@ -4017,10 +4017,13 @@ footer {
 	and no changes to the components that it will include! 
 */
 .chart-container {
-  width: 100%;
-  height: 220px; }
+  width: 100%; }
   .chart-container .amcharts-chart-div a {
     display: none !important; }
+  .chart-container.small {
+    height: 220px; }
+  .chart-container.stock {
+    height: 600px; }
 
 /* 
 	Should contain styles that apply to the component itself 
