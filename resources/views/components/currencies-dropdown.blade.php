@@ -3,7 +3,7 @@
 		<span class="caret"></span>
 		<span class="sr-only">Afiseaza grafic curs valutar BNR in alta moneda</span>
 	</button>
-	<ul class="dropdown-menu">
+	<ul class="dropdown-menu dropdown-menu-right">
 		<li class="dropdown-header">Schimba grafic curs cu:</li>
 		<li role="separator" class="divider"></li>
 		@foreach (\App\Models\Currency::excludeBase()->get() as $c)

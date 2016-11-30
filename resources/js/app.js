@@ -45,7 +45,8 @@
 /* Charts */
 var chartColors = {
 	chart1: '#c1c106',
-	chart2: '#ff0000'
+	chart2: '#ff0000',
+	chart3: '#0d8ecf'
 };
 
 AmCharts.translations.ro = {
@@ -323,6 +324,7 @@ function chartStock(chartId) {
 		
 		loadChart(1, 'EUR', chartColors.chart1, threeMonthsAgo, today);
 		loadChart(2, 'USD', chartColors.chart2, threeMonthsAgo, today);
+		loadChart(3, 'GBP', chartColors.chart3, threeMonthsAgo, today);
 
 		$('.currencies-dropdown .dropdown-menu li a').on('click', function(t) {
 			var currency = $(this).attr('data-currency');
