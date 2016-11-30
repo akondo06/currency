@@ -58,12 +58,12 @@ class Rate extends Model {
 		$base_currency = $this->whereCurrency($base_currency)->first();
 		$currency_multiplier = $amount * $base_currency->value;
 
-		$operation = "{$currency_multiplier} / `value`";
+		$converted_value = "{$currency_multiplier} / `value`";
 		if($reverse) {
-			$operation = "`value` / {$currency_multiplier}";
+			$converted_value = "`value` / {$currency_multiplier}";
 		} 
 
-		return $query->get(["*", $container['db']::raw("FORMAT(({$operation}), 4) AS `converted_value`")]);
+		return $query->get(["*", $container['db']::raw("FORMAT(({$converted_value}), 4) AS `converted_value`")]);
 		/*
 			Din moneda care o ai, transformi in RON si dupa imparti la cat 1 din moneda in care vrei valoarea!
 

@@ -15,15 +15,14 @@ class ChartData extends \App\Controllers\Base {
 		if(array_key_exists('base_currency', $args)) {
 			$base_currency = $args['base_currency'];
 		}
-		
 		$start_date = '2005-01-01';
 		if(array_key_exists('start_date', $args)) {
-			$start_date = new \DateTime($start_date);
+			$start_date = new \DateTime($args['start_date']);
 			$start_date = $start_date->format('Y-m-d');
 		}
-		$end_date = date('Y-m-d');
+		$end_date = date('Y').'-12-31';
 		if(array_key_exists('end_date', $args)) {
-			$end_date = new \DateTime($end_date);
+			$end_date = new \DateTime($args['end_date']);
 			$end_date = $end_date->format('Y-m-d');
 		}
 

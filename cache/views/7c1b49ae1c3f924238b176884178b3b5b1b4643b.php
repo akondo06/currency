@@ -5,7 +5,7 @@
 				<div class="panel-heading">Grafic evolutie curs <span class="chart-1-currency">EUR</span> din ultimele 3 luni</div>
 				<div class="panel-body no-padding">
 					<?php echo $__env->make('components.currencies-dropdown', ['chart' => 1], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-					<div class="chart-container" id="chart1"></div>
+					<div class="chart-container small" id="chart1"></div>
 				</div>
 			</div>
 		</div>
@@ -14,7 +14,7 @@
 				<div class="panel-heading">Grafic evolutie curs <span class="chart-2-currency">USD</span> din ultimele 3 luni</div>
 				<div class="panel-body no-padding">
 					<?php echo $__env->make('components.currencies-dropdown', ['chart' => 2], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-					<div class="chart-container" id="chart2"></div>
+					<div class="chart-container small" id="chart2"></div>
 				</div>
 			</div>
 		</div>
