@@ -217,7 +217,7 @@ function chartStock(chartId) {
 		});
 		dataSets[0].dataLoader.url = dataUrl(defaultCurrency);
 		dataSets[0].dataLoader.format = 'json';
-		dataSets[0].color = '#' + chartColors.chart1;
+		dataSets[0].color = chartColors.chart1;
 
 		var chart = AmCharts.makeChart(chartId, {
 			type: 'stock',
@@ -314,13 +314,6 @@ function chartStock(chartId) {
 		});
 	}
 }
-
-// function setChartDataSet(chart, dataset_url) {
-// 	AmCharts.loadFile(dataset_url, {}, function(data) {
-// 		chart.dataProvider = AmCharts.parseJSON(data);
-// 		chart.validateData();
-// 	});
-// }
 
 (function($) {
 	$(document).ready(function() {
