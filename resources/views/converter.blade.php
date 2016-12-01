@@ -39,3 +39,9 @@
 		</div>
 	</div>
 @endsection
+
+@section('scripts')
+<script type="text/javascript">
+	$('[data-toggle="tooltip"]').tooltip();
+</script>
+@endsection

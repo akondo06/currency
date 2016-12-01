@@ -8,9 +8,8 @@
 	
 }
 
-.currencies-list {
-	li { display: inline-block;
-		&:hover {  }
-		&.active {  }
+.currencies-list { padding: 0; margin: 0;
+	li { width: 18%; padding: 0; margin: 1%; text-align: center; background: #f9f9f9;
+		& + li { margin-left: 0; }
 	}
 }
