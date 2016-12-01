@@ -1,47 +1,3 @@
-
-/* Fast Converted */
-(function($) {
-	$(document).ready(function() {
-		$('.fast-converter #switch').click(function(event) {
-			event.preventDefault();
-			var form = $(this).closest('.fast-converter');
-			var from = form.find('select#convert-from');
-			var to = form.find('select#convert-to');
-			var fromVal = from.val();
-			from.val(to.val()).change();
-			to.val(fromVal).change();
-		});
-		$('.fast-converter #amount, .fast-converter #convert-from, .fast-converter #convert-to').on('change', function() {
-			var form = $(this).closest('.fast-converter');
-
-			var from = form.find('select#convert-from option:selected');
-			var to = form.find('select#convert-to option:selected');
-
-			var convertedValue = 0;
-
-			if(from && to) {
-				try {
-					var amount = form.find('input#amount').val();
-					if(amount) {
-						var currency_multiplier = from.val() * amount;
-						convertedValue = currency_multiplier / to.val();
-					}
-				} catch(error) {
-					convertedValue = 0;
-				}
-			}
-
-			if(typeof convertedValue !== 'number' || isNaN(convertedValue)) {
-				convertedValue = 0;
-			}
-			if(convertedValue.toPrecision) {
-				convertedValue = convertedValue.toPrecision(5);
-			}
-			form.find('input#result').val(convertedValue).change();
-		});
-	});
-})(jQuery);
-
 /* Charts */
 var chartColors = {
 	chart1: '#c1c106',
@@ -88,7 +44,7 @@ AmCharts.translations['export']['ro'] = {
 	'label.saved.from': 'Salvat de la: '
 };
 
-var chart_vars = {
+var chartVars = {
 	type: 'serial',
 	theme: 'light',
 	language: 'ro',
@@ -153,7 +109,7 @@ function dataUrl(currency, baseCurrency, startDate, endDate) {
 }
 
 function loadChart(chartId, currency, color, startDate, endDate, baseCurrency) {
-	var opts = $.extend(true, {}, chart_vars);
+	var opts = $.extend(true, {}, chartVars);
 
 	var multipliers = {
 		'HUF': 100,
@@ -316,6 +272,34 @@ function chartStock(chartId) {
 	}
 }
 
+function convertValue(from, to, amount, date, fromVal, toVal) {
+	var result = 0;
+
+	if(date && !fromVal && !toVal && cachedDateValues[date]) {
+		fromVal = cachedDateValues[date][from].value;
+		toVal = cachedDateValues[date][to].value;
+	}
+
+	if(from && to) {
+		try {
+			if(amount) {
+				var currency_multiplier = fromVal * amount;
+				result = currency_multiplier / toVal;
+			}
+		} catch(error) {
+			result = 0;
+		}
+	}
+
+	if(typeof result !== 'number' || isNaN(result)) {
+		result = 0;
+	}
+	if(result.toPrecision) {
+		result = result.toPrecision(5);
+	}
+	return result;
+}
+
 (function($) {
 	$(document).ready(function() {
 		var today = new Date();
@@ -337,5 +321,28 @@ function chartStock(chartId) {
 		});
 
 		chartStock('chart-currency-evolution');
+
+
+		/* Fast Converter */
+		$('.fast-converter #switch').click(function(event) {
+			event.preventDefault();
+			var form = $(this).closest('.fast-converter');
+			var from = form.find('select#convert-from');
+			var to = form.find('select#convert-to');
+			var fromVal = from.val();
+			from.val(to.val()).change();
+			to.val(fromVal).change();
+		});
+		$('.fast-converter #amount, .fast-converter #convert-from, .fast-converter #convert-to').on('change', function() {
+			var form = $(this).closest('.fast-converter');
+
+			var from = form.find('select#convert-from option:selected');
+			var to = form.find('select#convert-to option:selected');
+
+			var convertedValue = convertValue(from.attr('label').split(' ')[0], to.attr('label').split(' ')[0], form.find('input#amount').val(), null, from.val(), to.val());
+
+			form.find('input#result').val(convertedValue).change();
+		});
 	});
 })(jQuery);
+

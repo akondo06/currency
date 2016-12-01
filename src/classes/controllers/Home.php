@@ -61,7 +61,11 @@ class Home extends \App\Controllers\Base {
 		return $this->renderer->render($response, 'page', $args);
 	}
 
-	public function currencyEvolution($request, $response, $args) {
-		return $this->renderer->render($response, 'currency-evolution', $args);
+	public function evolution($request, $response, $args) {
+		return $this->renderer->render($response, 'evolution', $args);
+	}
+
+	public function convertor($request, $response, $args) {
+		return $this->renderer->render($response, 'converter', $args);
 	}
 }

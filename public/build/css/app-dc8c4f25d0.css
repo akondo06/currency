@@ -4044,4 +4044,7 @@ footer {
   max-height: 240px;
   overflow-y: auto; }
 
+.currencies-list li {
+  display: inline-block; }
+
 /*# sourceMappingURL=app.css.map */
