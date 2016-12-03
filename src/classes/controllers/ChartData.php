@@ -61,4 +61,27 @@ class ChartData extends \App\Controllers\Base {
 			->withHeader('Content-Type', 'application/json')
 			->write(json_encode($result));
 	}
+
+	public function onDate($request, $response, $args) {
+		$date = date('Y-m-d');
+		if(array_key_exists('date', $args)) {
+			$date = new \DateTime($args['date']);
+			$date = $date->format('Y-m-d');
+		}
+
+		$result = (object) [];
+
+		$rates = Rate::
+			onDate($date)->get();
+
+		foreach($rates as $rate) {
+			$currency = $rate->currency;
+			$result->$currency = $rate->value;
+		}
+
+		return $response
+			->withStatus(200)
+			->withHeader('Content-Type', 'application/json')
+			->write(json_encode($result));
+	}
 }

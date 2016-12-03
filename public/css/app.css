@@ -272,6 +272,7 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1483,6 +1484,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1987,6 +1989,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -4107,6 +4110,25 @@ a.thumbnail.active {
   .flag.dkk {
     background-color: gray; }
 
+.loading {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.05); }
+  .loading .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -21px 0 -21px;
+    color: #000;
+    font-size: 42px; }
+
+form.converter {
+  position: relative; }
+
 /* 
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
@@ -4157,11 +4179,11 @@ footer {
   padding: 0;
   margin: 0; }
   .currencies-list li {
+    background: #f9f9f9;
     width: 18%;
     padding: 0;
     margin: 1%;
-    text-align: center;
-    background: #f9f9f9; }
+    text-align: center; }
     .currencies-list li + li {
       margin-left: 0; }
 

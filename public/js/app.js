@@ -98,7 +98,7 @@ function toURLDate(date) {
 }
 
 function dataUrl(currency, baseCurrency, startDate, endDate) {
-	var result = homeUrl + '/json/' + currency;
+	var result = homeUrl + '/json/range/' + currency;
 	if(baseCurrency) {
 		result += '/' + baseCurrency;
 	}
@@ -272,36 +272,106 @@ function chartStock(chartId) {
 	}
 }
 
-function convertValue(from, to, amount, date, fromVal, toVal) {
+function convertAmount(amount, fromVal, toVal, date) {
 	var result = 0;
 
-	if(date && !fromVal && !toVal && cachedDateValues[date]) {
-		fromVal = cachedDateValues[date][from].value;
-		toVal = cachedDateValues[date][to].value;
+	// if(!currencies[fromVal] || !currencies[toVal]) {
+	// 	return;
+	// }
+
+	if(date && window.cachedDateValues[date]) {
+		fromVal = window.cachedDateValues[date][fromVal];
+		toVal = window.cachedDateValues[date][toVal];
 	}
 
-	if(from && to) {
+	if(fromVal && toVal) {
 		try {
 			if(amount) {
-				var currency_multiplier = fromVal * amount;
-				result = currency_multiplier / toVal;
+				result = (fromVal * amount) / toVal;
 			}
 		} catch(error) {
 			result = 0;
 		}
 	}
 
+
 	if(typeof result !== 'number' || isNaN(result)) {
 		result = 0;
 	}
+	result = Number(result);
 	if(result.toPrecision) {
 		result = result.toPrecision(5);
 	}
 	return result;
 }
 
+function amountWithVat(amount, vatPercentage) {
+	var result = Number(amount) + (Number(amount) * 0.19);
+	if(result.toPrecision) {
+		result = result.toPrecision(5);
+	}
+	return result;
+}
+
+function loadCurrencyOn(date, onSuccess, loadingElement) {
+	if(!window.cachedDateValues) {
+		window.cachedDateValues = {};
+	}
+	date = toURLDate(date);
+	if(date && window.cachedDateValues[date]) {
+		onSuccess(window.cachedDateValues[date]);
+	}
+	if(loadingElement) {
+		$(loadingElement).fadeIn('fast');
+	}
+	return $.ajax({
+		type: 'GET',
+		url: homeUrl + '/json/on/' + date,
+		cache: false,
+		dataType: 'json',
+		success: function(response) {
+			if(loadingElement) {
+				$(loadingElement).fadeOut('fast');
+			}
+			if(response) {
+				window.cachedDateValues[date] = response;
+				onSuccess(response);
+			}
+		},
+
+		fail: function() {
+			if(loadingElement) {
+				$(loadingElement).fadeOut('fast');
+			}
+		}
+	});
+}
+
 (function($) {
 	$(document).ready(function() {
+		/* List Input */
+		$('.list-input input[type="hidden"]').on('change', function() {
+			var field = $(this).closest('.list-input');
+			var value = $(this).val();
+			var valueIsSupported = currencies[value] || null;
+			if(valueIsSupported) {
+				var current = field.find('li[data-value="'+value+'"]');
+				field.find('li.active').removeClass('active');
+				current.addClass('active');
+			}
+		});
+		$('.list-input li > a').on('click', function() {
+			event.preventDefault();
+			var field = $(this).closest('ul');
+			var input = field.find('input[type="hidden"]');
+			var value = $(this).closest('li[data-value]').attr('data-value');
+			var valueIsSupported = currencies[value] || null;
+			if(valueIsSupported) {
+				input.val(value).change();
+			}
+		});
+
+		/* Charts */
 		var today = new Date();
 		var threeMonthsAgo = new Date(today);
 		threeMonthsAgo.setDate(threeMonthsAgo.getDate() - 90);
@@ -323,25 +393,44 @@ function convertValue(from, to, amount, date, fromVal, toVal) {
 		chartStock('chart-currency-evolution');
 
 
-		/* Fast Converter */
-		$('.fast-converter #switch').click(function(event) {
+		/* Converters */
+		var converterSelector = '.converter #amount, .converter #convert-from, .converter #convert-to';
+		var fastConverterSelector = '.fast-converter #amount, .fast-converter #convert-from, .fast-converter #convert-to';
+		$(converterSelector+', '+fastConverterSelector).on('change', function() {
+			var form = $(this).closest('form');
+ 
+			var date = form.find('#datepicker');
+			var from = form.find('#convert-from');
+			var to = form.find('#convert-to');
+			var amount = form.find('input#amount');
+			var withVat = form.find('#with-vat');
+
+			var convertedAmount = 0;
+			if(date.val()) {
+				var loadingElement = form.find('.loading');
+				if(!loadingElement.length) {
+					form.append('<div class="loading"><i class="fa fa-spinner fa-spin"></i></div>');
+					loadingElement = form.find('.loading');
+				}
+				loadCurrencyOn(date.val(), function(response) {
+					convertedAmount = convertAmount(amount.val(), from.val(), to.val(), date.val());
+					form.find('input#result').val(convertedAmount).change();
+					withVat.text(amountWithVat(convertedAmount));
+				}, loadingElement);
+			} else {
+				convertedAmount = convertAmount(amount.val(), from.val(), to.val(), null);
+				form.find('input#result').val(convertedAmount).change();
+				withVat.text(amountWithVat(convertedAmount));
+			}
+		});
+		$('.fast-converter #switch, .converter #switch').click(function(event) {
 			event.preventDefault();
-			var form = $(this).closest('.fast-converter');
-			var from = form.find('select#convert-from');
-			var to = form.find('select#convert-to');
+			var form = $(this).closest('form');
+			var from = form.find('#convert-from');
+			var to = form.find('#convert-to');
 			var fromVal = from.val();
 			from.val(to.val()).change();
 			to.val(fromVal).change();
-		});
-		$('.fast-converter #amount, .fast-converter #convert-from, .fast-converter #convert-to').on('change', function() {
-			var form = $(this).closest('.fast-converter');
-
-			var from = form.find('select#convert-from option:selected');
-			var to = form.find('select#convert-to option:selected');
-
-			var convertedValue = convertValue(from.attr('label').split(' ')[0], to.attr('label').split(' ')[0], form.find('input#amount').val(), null, from.val(), to.val());
-
-			form.find('input#result').val(convertedValue).change();
 		});
 	});
 })(jQuery);

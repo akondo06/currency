@@ -9,7 +9,7 @@
 					<div class="col-sm-4">
 						<div class="form-group">
 							<label for="datepicker">Curs din data de:</label>
-							<input type="text" name="date" value="{{previousWeekDay(date('Y-m-d'), 'd F Y')}}" class="form-control input-md datepicker" id="datepicker" />
+							<input type="text" name="date" value="{{previousWeekDay(date('Y-m-d'), 'Y-m-d')}}" class="form-control input-md datepicker" id="datepicker" />
 						</div>
 						<div class="form-group amount">
 							<label for="amount">Suma:</label>
@@ -23,7 +23,7 @@
 							<div class="input-group">
 								<input type="text" id="result" class="form-control input-md" value="0" />
 								<div class="input-group-addon">
-									Cu TVA: <span>1239</span>
+									Cu TVA: <span id="with-vat">0</span>
 								</div>
 							</div>
 						</div>
