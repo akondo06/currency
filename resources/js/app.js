@@ -333,8 +333,8 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 			if(loadingElement) {
 				$(loadingElement).fadeOut('fast');
 			}
-			if(response) {
-				window.cachedDateValues[date] = response;
+			if(response && response.published_on) {
+				window.cachedDateValues[date] = response.values;
 				onSuccess(response);
 			}
 		},
@@ -394,7 +394,7 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 
 
 		/* Converters */
-		var converterSelector = '.converter #amount, .converter #convert-from, .converter #convert-to';
+		var converterSelector = '.converter #amount, .converter #convert-from, .converter #convert-to, .converter #datepicker';
 		var fastConverterSelector = '.fast-converter #amount, .fast-converter #convert-from, .fast-converter #convert-to';
 		$(converterSelector+', '+fastConverterSelector).on('change', function() {
 			var form = $(this).closest('form');

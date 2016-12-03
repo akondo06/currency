@@ -65,18 +65,21 @@ class ChartData extends \App\Controllers\Base {
 	public function onDate($request, $response, $args) {
 		$date = date('Y-m-d');
 		if(array_key_exists('date', $args)) {
-			$date = new \DateTime($args['date']);
-			$date = $date->format('Y-m-d');
+			$dateObj = new \DateTime($args['date']);
+			$current_date = new \DateTime();
+			if($dateObj < $current_date) {
+				$date = $dateObj->format('Y-m-d');
+			}
 		}
 
-		$result = (object) [];
 
-		$rates = Rate::
-			onDate($date)->get();
+		$result = (object) ['published_on' => $date, 'values' => (object)[] ];
+
+		$rates = Rate::onDate($date)->get();
 
 		foreach($rates as $rate) {
 			$currency = $rate->currency;
-			$result->$currency = $rate->value;
+			$result->values->$currency = $rate->value;
 		}
 
 		return $response
