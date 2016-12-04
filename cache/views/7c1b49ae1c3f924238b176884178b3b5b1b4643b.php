@@ -56,22 +56,8 @@
 				<div class="panel-body">
 					
 					<form class="form-inline" method="post">
-						<div class="form-group">
-							<label for="datepicker">Afiseaza curs BNR din data de:</label>
-							<input type="text" name="index_date" value="<?php echo e($index_date); ?>" class="form-control input-sm datepicker" id="datepicker" />
-						</div>
-						<div class="form-group">
-							<label for="index_currency">raportat la</label>
-							<select name="index_currency" id="index_currency" class="form-control input-sm">
-								<?php $__currentLoopData = \App\Models\Currency::all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-									<?php if($r->currency == $currency->currency): ?>
-										<option label="<?php echo e($r->title()); ?>" value="<?php echo e($r->currency); ?>" selected="selected"><?php echo e($r->title()); ?></option>
-									<?php else: ?>
-										<option label="<?php echo e($r->title()); ?>" value="<?php echo e($r->currency); ?>"><?php echo e($r->title()); ?></option>
-									<?php endif; ?>
-								<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-							</select>
-						</div>
+						<?php echo $__env->make('components.date-picker', ['id' => 'datepicker', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'size' => 'sm', 'label' => 'raportat la'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 						<div class="form-group">
 							<input type="submit" name="display" value="update" class="btn btn-primary btn-sm">
 						</div>

@@ -7,10 +7,7 @@
 			<form class="converter">
 				<div class="row">
 					<div class="col-sm-4">
-						<div class="form-group">
-							<label for="datepicker">Curs din data de:</label>
-							<input type="text" name="date" value="{{previousWeekDay(date('Y-m-d'), 'Y-m-d')}}" class="form-control input-md datepicker" id="datepicker" />
-						</div>
+						@include('components.date-picker', ['id' => 'datepicker', 'value' => previousWeekDay(date('Y-m-d'), 'Y-m-d'), 'size' => 'md', 'label' => 'Curs din data de:'])
 						<div class="form-group amount">
 							<label for="amount">Suma:</label>
 							<div class="input-group">

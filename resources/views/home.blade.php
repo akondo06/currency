@@ -60,22 +60,8 @@
 						{{$que}}
 					</pre> --}}
 					<form class="form-inline" method="post">
-						<div class="form-group">
-							<label for="datepicker">Afiseaza curs BNR din data de:</label>
-							<input type="text" name="index_date" value="{{$index_date}}" class="form-control input-sm datepicker" id="datepicker" />
-						</div>
-						<div class="form-group">
-							<label for="index_currency">raportat la</label>
-							<select name="index_currency" id="index_currency" class="form-control input-sm">
-								@foreach (\App\Models\Currency::all() as $r)
-									@if ($r->currency == $currency->currency)
-										<option label="{{$r->title()}}" value="{{$r->currency}}" selected="selected">{{$r->title()}}</option>
-									@else
-										<option label="{{$r->title()}}" value="{{$r->currency}}">{{$r->title()}}</option>
-									@endif
-								@endforeach
-							</select>
-						</div>
+						@include('components.date-picker', ['id' => 'datepicker', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'])
+						@include('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'size' => 'sm', 'label' => 'raportat la'])
 						<div class="form-group">
 							<input type="submit" name="display" value="update" class="btn btn-primary btn-sm">
 						</div>

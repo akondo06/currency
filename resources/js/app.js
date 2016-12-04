@@ -294,7 +294,6 @@ function convertAmount(amount, fromVal, toVal, date) {
 		}
 	}
 
-
 	if(typeof result !== 'number' || isNaN(result)) {
 		result = 0;
 	}
@@ -349,6 +348,19 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 
 (function($) {
 	$(document).ready(function() {
+		/* Date Picker */
+		$('.input-group.date').datepicker({
+			format: 'yyyy-mm-dd',
+			language: 'ro',
+			weekStart: 1,
+			startDate: '2015-01-01',
+			endDate: 'tomorrow',
+			maxViewMode: 2,
+			daysOfWeekDisabled: '0,6',
+			todayHighlight: true,
+			// orientation: 'bottom auto'
+		});
+
 		/* List Input */
 		$('.list-input input[type="hidden"]').on('change', function() {
 			var field = $(this).closest('.list-input');
