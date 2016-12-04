@@ -63,7 +63,7 @@
 						</div>
 					</form>
 				</div>
-				<table class="table table-hover">
+				<table class="table table-striped table-hover">
 					<thead>
 						<th>#</th>
 						<th>Simbol</th>

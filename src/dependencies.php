@@ -26,27 +26,27 @@ $container['logger'] = function($c) {
 
 // 404 handler
 $container['notFoundHandler'] = function($c) {
-    return function($request, $response) use ($c) {
-        return $c['renderer']->render($response->withStatus(404), '404');
-    };
+	return function($request, $response) use ($c) {
+		return $c['renderer']->render($response->withStatus(404), '404');
+	};
 };
 
 // Load Helpers here ....
 // require __DIR__ . '/classes/helpers/urlFor.php';
 // require __DIR__ . '/classes/helpers/previousWeekDay.php';
 foreach (glob( __DIR__ . "/classes/helpers/*.php") as $filename) {
-    require $filename;
+	require $filename;
 }
 
 // db
 $container['db'] = function ($container) {
-    $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($container['settings']['db']);
+	$capsule = new \Illuminate\Database\Capsule\Manager;
+	$capsule->addConnection($container['settings']['db']);
 
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
+	$capsule->setAsGlobal();
+	$capsule->bootEloquent();
 
-    return $capsule;
+	return $capsule;
 };
 
 $container['session'] = function ($c) {

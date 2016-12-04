@@ -85,7 +85,7 @@ class Home extends \App\Controllers\Base {
 		// Checking if currency exists .. otherwise .. render the 404 ...
 		$currency = Currency::where('slug', $args['slug'])->first();
 		if(!$currency) {
-			return $this->notFoundHandler($request, $response);
+			return $response->withStatus(404);
 		}
 
 
