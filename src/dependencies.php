@@ -24,6 +24,13 @@ $container['logger'] = function($c) {
 	return $logger;
 };
 
+// 404 handler
+$container['notFoundHandler'] = function($c) {
+    return function($request, $response) use ($c) {
+        return $c['renderer']->render($response->withStatus(404), '404');
+    };
+};
+
 // Load Helpers here ....
 // require __DIR__ . '/classes/helpers/urlFor.php';
 // require __DIR__ . '/classes/helpers/previousWeekDay.php';

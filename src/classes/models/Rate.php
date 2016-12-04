@@ -34,11 +34,11 @@ class Rate extends Model {
 		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->orderBy('currency', 'desc')->groupBy('currency');
 	}
 
-	public function scopeBetweenDates($query, $start_date = null, $end_date = null) {
+	public function scopeBetweenDates($query, $start_date = null, $end_date = null, $order = 'asc') {
 		return $query
 			->whereDate('published_on', '>=', previousWeekDay($start_date))
 			->whereDate('published_on', '<=', previousWeekDay($end_date))
-			->orderBy('published_on', 'asc');
+			->orderBy('published_on', $order);
 	}
 
 	/*

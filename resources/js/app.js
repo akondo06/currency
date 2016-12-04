@@ -392,6 +392,10 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 		loadChart(2, 'USD', chartColors.chart2, threeMonthsAgo, today);
 		loadChart(3, 'GBP', chartColors.chart3, threeMonthsAgo, today);
 
+		if(graph4) {
+			loadChart(4, graph4.currency, graph4.color, graph4.startDate || threeMonthsAgo, graph4.endDate || today, graph4.baseCurrency)
+		}
+
 		$('.currencies-dropdown .dropdown-menu li a').on('click', function(t) {
 			var currency = $(this).attr('data-currency');
 			var $main = $(this).closest('.currencies-dropdown');

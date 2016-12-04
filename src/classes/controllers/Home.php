@@ -68,4 +68,44 @@ class Home extends \App\Controllers\Base {
 	public function convertor($request, $response, $args) {
 		return $this->renderer->render($response, 'converter', $args);
 	}
+
+	public function currency($request, $response, $args) {
+		$session = $this->session;
+
+		// Attrs
+		$date = new \DateTime(); // today
+		$end_date = $date->format('Y-m-d');
+
+		$date->sub(\DateInterval::createFromDateString('6 months'));
+		$date->sub(\DateInterval::createFromDateString('2 day'));
+		$start_date = $date->format('Y-m-d');
+
+		$base_currency = 'RON';
+
+		// Checking if currency exists .. otherwise .. render the 404 ...
+		$currency = Currency::where('slug', $args['slug'])->first();
+		if(!$currency) {
+			return $this->notFoundHandler($request, $response);
+		}
+
+
+		$rates = Rate::
+			betweenDates($start_date, $end_date, 'desc')
+			->getEquivalentValues($base_currency, 1, [$currency->currency], null, true);
+
+		foreach($rates as $index => $rate) {
+			$prev_index = $index + 1;
+			if(isset($rates[$prev_index])) {
+				$rate->yesterday = $rates[$prev_index];
+			}
+		}
+		$rates->pop();
+
+		$args['currency'] = $currency;
+		$args['base_currency'] = $base_currency;
+		$args['start_date'] = $start_date;
+		$args['end_date'] = $end_date;
+		$args['rates'] = $rates;
+		return $this->renderer->render($response, 'currency', $args);
+	}
 }

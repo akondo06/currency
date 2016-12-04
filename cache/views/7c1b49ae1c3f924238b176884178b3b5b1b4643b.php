@@ -78,7 +78,7 @@
 							<tr>
 								<td><span class="flag <?php echo e(strtolower($rate->currency)); ?>"></span></td>
 								<td><?php echo e($rate->currency); ?></td>
-								<td><?php echo e($rate->currencyObj->name); ?></td>
+								<td><a href="<?php echo e(urlFor('currency', ['slug'=> $rate->currencyObj->slug])); ?>"><?php echo e($rate->currencyObj->name); ?></a></td>
 								<td><?php echo e($rate->two_days_before->converted_value); ?></td>
 								<td><?php echo e($rate->yesterday->converted_value); ?></td>
 								<td><?php echo e($rate->variation()); ?></td>

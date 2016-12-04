@@ -67,7 +67,7 @@
 						</div>
 					</form>
 				</div>
-				<table class="table table-hover">
+				<table class="table table-striped table-hover">
 					<thead>
 						<th>#</th>
 						<th>Simbol</th>
@@ -82,7 +82,7 @@
 							<tr>
 								<td><span class="flag {{strtolower($rate->currency)}}"></span></td>
 								<td>{{$rate->currency}}</td>
-								<td>{{$rate->currencyObj->name}}</td>
+								<td><a href="{{urlFor('currency', ['slug'=> $rate->currencyObj->slug])}}">{{$rate->currencyObj->name}}</a></td>
 								<td>{{$rate->two_days_before->converted_value}}</td>
 								<td>{{$rate->yesterday->converted_value}}</td>
 								<td>{{$rate->variation()}}</td>

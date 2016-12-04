@@ -10,5 +10,6 @@ class Base {
 		$this->logger = $container->get('logger');
 		$this->db = $container->get('db');
 		$this->session = $container->get('session');
+		$this->notFoundHandler = $container->get('notFoundHandler');
 	}
 }
