@@ -7,8 +7,8 @@ use App\Models\Rate;
 
 class Home extends \App\Controllers\Base {
 	public function index($request, $response, $args) {
-		// Sample log message
-		$this->logger->info('Slim-Skeleton \'/\' route');
+		// // Sample log message
+		// $this->logger->info('Slim-Skeleton \'/\' route');
 		$session = $this->session;
 
 		// Homepage table data here ...
@@ -57,16 +57,16 @@ class Home extends \App\Controllers\Base {
 		return $this->renderer->render($response, 'home', $args);
 	}
 
-	public function page($request, $response, $args) {
-		return $this->renderer->render($response, 'page', $args);
-	}
-
 	public function evolution($request, $response, $args) {
 		return $this->renderer->render($response, 'evolution', $args);
 	}
 
 	public function convertor($request, $response, $args) {
 		return $this->renderer->render($response, 'converter', $args);
+	}
+
+	public function history($request, $response, $args) {
+		return $this->renderer->render($response, 'history', $args);
 	}
 
 	public function currency($request, $response, $args) {

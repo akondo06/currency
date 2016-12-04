@@ -392,7 +392,8 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 		loadChart(2, 'USD', chartColors.chart2, threeMonthsAgo, today);
 		loadChart(3, 'GBP', chartColors.chart3, threeMonthsAgo, today);
 
-		if(graph4) {
+		if(window.akdGraph4) {
+			var graph4 = window.akdGraph4;
 			loadChart(4, graph4.currency, graph4.color, graph4.startDate || threeMonthsAgo, graph4.endDate || today, graph4.baseCurrency)
 		}
 

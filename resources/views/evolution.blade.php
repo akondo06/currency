@@ -3,7 +3,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading">Evolutie Curs</div>
-		<div class="panel-body no-padding">
+		<div class="panel-body">
 			<div class="chart-container stock" id="chart-currency-evolution" data-currency="EUR"></div>
 		</div>
 	</div>

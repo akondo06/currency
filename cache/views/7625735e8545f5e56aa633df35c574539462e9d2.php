@@ -13,19 +13,10 @@
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="<?php echo e(urlFor('page', ['name' => 'convertor-valutar'])); ?>">Convertor Valutar</a></li>
-						<li><a href="<?php echo e(urlFor('page', ['name' => 'evolutie-curs'])); ?>">Evolutie Curs</a></li>
-						<li><a href="<?php echo e(urlFor('page', ['name' => 'curs-valutar-banci'])); ?>">Curs Valutar Banci</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cel mai bun curs <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo e(urlFor('page', ['name' => 'cel-mai-bun-curs-euro'])); ?>">EURO</a></li>
-								<li><a href="<?php echo e(urlFor('page', ['name' => 'cel-mai-bun-curs-dolar'])); ?>">USD - Dolar American</a></li>
-								<li><a href="<?php echo e(urlFor('page', ['name' => 'cel-mai-bun-curs-lira-sterlina'])); ?>">GBP - Lira Sterlina</a></li>
-								<li><a href="<?php echo e(urlFor('page', ['name' => 'cel-mai-bun-curs-franc-elvetian'])); ?>">CHF - Francul Elvetian</a></li>
-							</ul>
-						</li>
-						<li><a href="<?php echo e(urlFor('page', ['name' => 'istoric-curs-valutar'])); ?>">Istoric Curs Valutar</a></li>
+						<li><a href="<?php echo e(urlFor('currency-converter')); ?>">Convertor Valutar</a></li>
+						<li><a href="<?php echo e(urlFor('currency-evolution')); ?>">Evolutie Curs</a></li>
+						
+						<li><a href="<?php echo e(urlFor('history')); ?>">Istoric Curs Valutar</a></li>
 					</ul>
 				</div>
 			</div>

@@ -41,6 +41,6 @@
 <script type="text/javascript">
 	var sixMonthsAgo = new Date();
 	sixMonthsAgo.setDate(sixMonthsAgo.getDate() - 180);
-	var graph4 = { currency: '{{$currency->currency}}', baseCurrency: '{{$base_currency}}', color: '#ff00ff', startDate: sixMonthsAgo };
+	window.akdGraph4 = { currency: '{{$currency->currency}}', baseCurrency: '{{$base_currency}}', color: '#ff00ff', startDate: sixMonthsAgo };
 </script>
 @endsection
