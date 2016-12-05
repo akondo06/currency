@@ -68,9 +68,43 @@ class Home extends \App\Controllers\Base {
 	public function history($request, $response, $args) {
 		return $this->renderer->render($response, 'history', $args);
 	}
+	public function onDate($request, $response, $args) {
+		$date = date('Y-m-d');
+		if(array_key_exists('date', $args)) {
+			$dateObj = new \DateTime($args['date']);
+			$current_date = new \DateTime();
+			if($dateObj < $current_date) {
+				$date = $dateObj->format('Y-m-d');
+			}
+		}
+		$args['rates'] = Rate::onDate($date)->get();
+		return $this->renderer->render($response, 'on-date', $args);
+	}
 
 	public function currency($request, $response, $args) {
 		$session = $this->session;
+
+		// Checking if currency exists .. otherwise .. render the 404 ...
+		$currency = Currency::where('slug', $args['slug'])->first();
+		if(!$currency) {
+			return $response->withStatus(404);
+		}
+
+
+		$currency_session_path = 'currency_'.$currency->currency.'_';
+
+		if($request->isPost()) {
+			$form = $request->getParsedBody();
+			if(array_key_exists('start_date', $form) && array_key_exists('end_date', $form) && array_key_exists('base_currency', $form)) {
+				$session->set($currency_session_path.'start_date', $form['start_date']);
+				$session->set($currency_session_path.'end_date', $form['end_date']);
+				$session->set($currency_session_path.'base_currency', $form['base_currency']);
+			} else {
+				$session->set($currency_session_path.'start_date', null);
+				$session->set($currency_session_path.'end_date', null);
+				$session->set($currency_session_path.'base_currency', null);
+			}
+		}
 
 		// Attrs
 		$date = new \DateTime(); // today
@@ -80,19 +114,29 @@ class Home extends \App\Controllers\Base {
 		$date->sub(\DateInterval::createFromDateString('2 day'));
 		$start_date = $date->format('Y-m-d');
 
-		$base_currency = 'RON';
-
-		// Checking if currency exists .. otherwise .. render the 404 ...
-		$currency = Currency::where('slug', $args['slug'])->first();
-		if(!$currency) {
-			return $response->withStatus(404);
+		if(!$session->get($currency_session_path.'start_date')) {
+			$session->set($currency_session_path.'start_date', $start_date);
+		}
+		if(!$session->get($currency_session_path.'end_date')) {
+			$session->set($currency_session_path.'end_date', $end_date);
+		}
+		if(!$session->get($currency_session_path.'base_currency')) {
+			$session->set($currency_session_path.'base_currency', 'RON');
 		}
 
+		$args['start_date'] = $session->get($currency_session_path.'start_date');
+		$args['end_date'] = $session->get($currency_session_path.'end_date');
+		$args['base_currency'] = $session->get($currency_session_path.'base_currency');
 
-		$rates = Rate::
-			betweenDates($start_date, $end_date, 'desc')
-			->getEquivalentValues($base_currency, 1, [$currency->currency], null, true);
+		$args['currency'] = $currency;
 
+
+		$base_currency = $args['base_currency'];
+		$start_date = $args['start_date'];
+		$end_date = $args['end_date'];
+
+		// Rates
+		$rates = Rate::betweenDates($start_date, $end_date, 'desc')->getEquivalentValues($base_currency, 1, [$currency->currency], null, true);
 		foreach($rates as $index => $rate) {
 			$prev_index = $index + 1;
 			if(isset($rates[$prev_index])) {
@@ -101,10 +145,6 @@ class Home extends \App\Controllers\Base {
 		}
 		$rates->pop();
 
-		$args['currency'] = $currency;
-		$args['base_currency'] = $base_currency;
-		$args['start_date'] = $start_date;
-		$args['end_date'] = $end_date;
 		$args['rates'] = $rates;
 		return $this->renderer->render($response, 'currency', $args);
 	}

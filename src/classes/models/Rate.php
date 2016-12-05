@@ -15,12 +15,12 @@ class Rate extends Model {
 	}
 
 	public function variation() {
-		$value = $this->converted_value ? $this->converted_value : $this->value;
-		$yesterday = $this->yesterday ? $this->yesterday : null;
+		$value = isset($this->converted_value) ? $this->converted_value : $this->value;
+		$yesterday = isset($this->yesterday) ? $this->yesterday : null;
 		if(!$yesterday) {
 			return 0;
 		}
-		$yesterday_value = $this->yesterday->converted_value ? $this->yesterday->converted_value : $this->yesteday->value;
+		$yesterday_value = isset($yesterday->converted_value) ? $yesterday->converted_value : $yesterday->value;
 		$result = $value - $yesterday_value;
 
 		$positive = '';

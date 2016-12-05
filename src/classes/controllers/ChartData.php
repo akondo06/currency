@@ -72,7 +72,6 @@ class ChartData extends \App\Controllers\Base {
 			}
 		}
 
-
 		$result = (object) ['published_on' => $date, 'values' => (object)[] ];
 
 		$rates = Rate::onDate($date)->get();

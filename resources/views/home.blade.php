@@ -56,9 +56,6 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rates[0]->published_on))}}, raportat la {{$currency->title()}}</div>
 				<div class="panel-body">
-					{{-- <pre style="height: 100px;">
-						{{$que}}
-					</pre> --}}
 					<form class="form-inline" method="post">
 						@include('components.date-picker', ['id' => 'datepicker', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'])
 						@include('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'size' => 'sm', 'label' => 'raportat la'])
@@ -67,30 +64,7 @@
 						</div>
 					</form>
 				</div>
-				<table class="table table-striped table-hover">
-					<thead>
-						<th>#</th>
-						<th>Simbol</th>
-						<th>Denumire valuta</th>
-						<th>{{$rates[0]->two_days_before->published_on}}</th>
-						<th>{{$rates[0]->yesterday->published_on}}</th>
-						<th>Variatie</th>
-						<th>{{$rates[0]->published_on}}</th>
-					</thead>
-					<tbody>
-						@foreach ($rates as $rate)
-							<tr>
-								<td><span class="flag {{strtolower($rate->currency)}}"></span></td>
-								<td>{{$rate->currency}}</td>
-								<td><a href="{{urlFor('currency', ['slug'=> $rate->currencyObj->slug])}}">{{$rate->currencyObj->name}}</a></td>
-								<td>{{$rate->two_days_before->converted_value}}</td>
-								<td>{{$rate->yesterday->converted_value}}</td>
-								<td>{{$rate->variation()}}</td>
-								<td>{{$rate->converted_value}}</td>
-							</tr>
-						@endforeach
-					</tbody>
-				</table>
+				@include('components.currencies-table', ['rates' => $rates, 'with_variation' => true])
 			</div>
 		</div>
 	</div>
