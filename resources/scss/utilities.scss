@@ -1,9 +1,45 @@
 .no-padding { padding: 0!important; }
 
-.flag { display: inline-block; background-color: olive; width: 18px; height: 14px; overflow: hidden;
-	&.eur { background-color: red; }
-	&.usd { background-color: black; }
-	&.dkk { background-color: gray; }
+.flag { display: inline-block; background: url('../img/flags.png') no-repeat; width: 16px; height: 11px; overflow: hidden;
+
+	// https://www.flag-sprites.com/
+	// country , currency
+	&.za, &.zar { background-position: -16px -55px; }
+	&.xdr { background-position: 0 -0; } // cursul draciei de fondul bancilor internationale...
+	&.xau { background-position: 0 0; } // gram de haur ...
+	&.us, &.usd { background-position: 0 -55px; }
+	&.ua, &.uah { background-position: -80px -44px; }
+	&.tr, &.try { background-position: -64px -44px; }
+	&.se, &.sek { background-position: -16px -44px; }
+	&.ru, &.rub { background-position: 0 -44px; }
+	&.rs, &.rsd { background-position: -80px -33px; }
+	&.pl, &.pln { background-position: -48px -33px; }
+	&.nz, &.nzd { background-position: -32px -33px; }
+	&.no, &.nok { background-position: -16px -33px; }
+	&.mx, &.mxn { background-position: 0 -33px; }
+	&.md, &.mdl { background-position: -80px -22px; }
+	&.kr, &.krw { background-position: -64px -22px; }
+	&.jp, &.jpy { background-position: -48px -22px; }
+	&.in, &.inr { background-position: -32px -22px; }
+	&.hu, &.huf { background-position: -16px -22px; }
+	&.hr, &.hrk { background-position: 0 -22px; }
+	&.gb, &.gbp { background-position: -80px -11px; }
+	&.eu, &.eur { background-position: -64px -11px; }
+	&.eg, &.egp { background-position: -48px -11px; }
+	&.dk, &.dkk { background-position: -32px -11px; }
+	&.cz, &.czk { background-position: -16px -11px; }
+
+	&.cn, &.cny { background-position: 0 -11px; }
+	&.ch, &.chf { background-position: -80px 0; }
+	&.ca, &.cad { background-position: -64px 0; }
+	&.br, &.brl { background-position: -48px 0; }
+	&.bg, &.bgn { background-position: -32px 0; }
+	&.au, &.aud { background-position: -16px 0; }
+	&.ae, &.aed { background-position: 0 0; }
+	
+	&.sk, &.skk { background-position: -48px -44px; } // slovakia has euro now ...
+	&.ro, &.ron { background-position: -64px -33px; }
+
 }
 
 .loading { z-index: 20; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: rgba($black, 0.05);

@@ -4099,16 +4099,76 @@ a.thumbnail.active {
 
 .flag {
   display: inline-block;
-  background-color: olive;
-  width: 18px;
-  height: 14px;
+  background: url("../img/flags.png") no-repeat;
+  width: 16px;
+  height: 11px;
   overflow: hidden; }
-  .flag.eur {
-    background-color: red; }
-  .flag.usd {
-    background-color: black; }
-  .flag.dkk {
-    background-color: gray; }
+  .flag.za, .flag.zar {
+    background-position: -16px -55px; }
+  .flag.xdr {
+    background-position: 0 -0; }
+  .flag.xau {
+    background-position: 0 0; }
+  .flag.us, .flag.usd {
+    background-position: 0 -55px; }
+  .flag.ua, .flag.uah {
+    background-position: -80px -44px; }
+  .flag.tr, .flag.try {
+    background-position: -64px -44px; }
+  .flag.se, .flag.sek {
+    background-position: -16px -44px; }
+  .flag.ru, .flag.rub {
+    background-position: 0 -44px; }
+  .flag.rs, .flag.rsd {
+    background-position: -80px -33px; }
+  .flag.pl, .flag.pln {
+    background-position: -48px -33px; }
+  .flag.nz, .flag.nzd {
+    background-position: -32px -33px; }
+  .flag.no, .flag.nok {
+    background-position: -16px -33px; }
+  .flag.mx, .flag.mxn {
+    background-position: 0 -33px; }
+  .flag.md, .flag.mdl {
+    background-position: -80px -22px; }
+  .flag.kr, .flag.krw {
+    background-position: -64px -22px; }
+  .flag.jp, .flag.jpy {
+    background-position: -48px -22px; }
+  .flag.in, .flag.inr {
+    background-position: -32px -22px; }
+  .flag.hu, .flag.huf {
+    background-position: -16px -22px; }
+  .flag.hr, .flag.hrk {
+    background-position: 0 -22px; }
+  .flag.gb, .flag.gbp {
+    background-position: -80px -11px; }
+  .flag.eu, .flag.eur {
+    background-position: -64px -11px; }
+  .flag.eg, .flag.egp {
+    background-position: -48px -11px; }
+  .flag.dk, .flag.dkk {
+    background-position: -32px -11px; }
+  .flag.cz, .flag.czk {
+    background-position: -16px -11px; }
+  .flag.cn, .flag.cny {
+    background-position: 0 -11px; }
+  .flag.ch, .flag.chf {
+    background-position: -80px 0; }
+  .flag.ca, .flag.cad {
+    background-position: -64px 0; }
+  .flag.br, .flag.brl {
+    background-position: -48px 0; }
+  .flag.bg, .flag.bgn {
+    background-position: -32px 0; }
+  .flag.au, .flag.aud {
+    background-position: -16px 0; }
+  .flag.ae, .flag.aed {
+    background-position: 0 0; }
+  .flag.sk, .flag.skk {
+    background-position: -48px -44px; }
+  .flag.ro, .flag.ron {
+    background-position: -64px -33px; }
 
 .loading {
   z-index: 20;
