@@ -272,6 +272,7 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1483,6 +1484,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1987,6 +1989,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -4351,6 +4354,14 @@ form.converter {
   border-width: 1px 0;
   margin-left: -5px;
   margin-right: -5px; }
+
+/* 
+	Should contain styles that apply to the component itself 
+	and no changes to the components that it will include! 
+*/
+.nav.nav-month-day li a {
+  padding: 6px;
+  font-size: 13px; }
 
 /* 
 	Should contain styles that apply to the component itself 

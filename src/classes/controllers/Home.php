@@ -66,8 +66,51 @@ class Home extends \App\Controllers\Base {
 	}
 
 	public function history($request, $response, $args) {
+
+		$date_max = new \DateTime();
+		$date_min = new \DateTime('2005-01-01');
+
+		$date = new \DateTime('2005-01-01');
+		$years = [];
+
+		$allowed_week_days = [1, 2, 3, 4, 5];
+
+		$month_names = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+		$step = \DateInterval::createFromDateString('1 year');
+		while($date >= $date_min && $date <= $date_max) {
+			$year = (object) [ 'year' => $date->format('Y'), 'months' => [] ];
+
+			foreach($month_names as $month_name) {
+				$year->months[] = (object) ['month' => ucfirst($month_name), 'days' => [] ];
+			}
+			$years[] = $year;
+			$date->add($step);
+		}
+
+		$step = \DateInterval::createFromDateString('1 day');
+		foreach($years as $year) {
+			$date = new \DateTime($year->year.'-01-01');
+
+			while($date->format('Y') == $year->year) {
+				if(in_array($date->format('N'), $allowed_week_days) && $date <= $date_max) {
+					$month_no = intval($date->format('m')) - 1;
+					$year->months[$month_no]->no = $date->format('m');
+					$year->months[$month_no]->days[] = $date->format('d');
+				}
+				$date->add($step);
+			}
+		}
+
+		foreach($years as $year) {
+			$year->months = array_reverse($year->months);
+		}
+
+		$args['years'] = array_reverse($years);
+		
 		return $this->renderer->render($response, 'history', $args);
 	}
+
 	public function onDate($request, $response, $args) {
 		$date = date('Y-m-d');
 		if(array_key_exists('date', $args)) {

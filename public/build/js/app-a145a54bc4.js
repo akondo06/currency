@@ -346,6 +346,15 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 	});
 }
 
+function listInputSwitchSelectedValues(form) {
+	form = form.closest('form');
+	var from = form.find('#convert-from');
+	var to = form.find('#convert-to');
+	var fromVal = from.val();
+	from.val(to.val()).change();
+	to.val(fromVal).change();
+}
+
 (function($) {
 	$(document).ready(function() {
 		/* Date Picker */
@@ -362,6 +371,7 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 		});
 
 		/* List Input */
+		var oppositeList = { convert_from: 'convert-to', convert_to: 'convert-from' };
 		$('.list-input input[type="hidden"]').on('change', function() {
 			var field = $(this).closest('.list-input');
 			var value = $(this).val();
@@ -379,6 +389,13 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 			var value = $(this).closest('li[data-value]').attr('data-value');
 			var valueIsSupported = currencies[value] || null;
 			if(valueIsSupported) {
+				var otherList = oppositeList[input.attr('id').replace('-', '_')];
+				otherList = $('#'+otherList);
+
+				if(otherList.val() === value) {
+					var otherValue = field.find('li[data-value].active').attr('data-value');
+					otherList.val(otherValue).change();
+				}
 				input.val(value).change();
 			}
 		});
@@ -442,12 +459,7 @@ function loadCurrencyOn(date, onSuccess, loadingElement) {
 		});
 		$('.fast-converter #switch, .converter #switch').click(function(event) {
 			event.preventDefault();
-			var form = $(this).closest('form');
-			var from = form.find('#convert-from');
-			var to = form.find('#convert-to');
-			var fromVal = from.val();
-			from.val(to.val()).change();
-			to.val(fromVal).change();
+			listInputSwitchSelectedValues($(this));
 		});
 	});
 })(jQuery);
