@@ -372,7 +372,7 @@ function listInputSwitchSelectedValues(form) {
 
 		/* List Input */
 		var oppositeList = { convert_from: 'convert-to', convert_to: 'convert-from' };
-		$('.list-input input[type="hidden"]').on('change', function() {
+		$('.list-input input[type="hidden"]').on('change', function(event) {
 			var field = $(this).closest('.list-input');
 			var value = $(this).val();
 			var valueIsSupported = currencies[value] || null;
@@ -382,7 +382,7 @@ function listInputSwitchSelectedValues(form) {
 				current.addClass('active');
 			}
 		});
-		$('.list-input li > a').on('click', function() {
+		$('.list-input li > a').on('click', function(event) {
 			event.preventDefault();
 			var field = $(this).closest('ul');
 			var input = field.find('input[type="hidden"]');
