@@ -1,7 +1,5 @@
-<footer>
+<footer class="footer">
 	<div class="container">
-		<nav class="navbar navbar-default">
-			Copyright &copy; {{date('Y')}} Curs Valutar
-		</nav>
+		Copyright &copy; {{date('Y')}} Curs Valutar
 	</div>
 </footer>

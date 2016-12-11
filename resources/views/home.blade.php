@@ -53,12 +53,12 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<div class="panel panel-default">
+			<div class="panel panel-default panel-with-table-sm">
 				<div class="panel-heading">Cursul BNR afisat astazi {{date('d F Y')}} a fost licitat de catre BNR in data de: {{date('d F Y', strtotime($rates[0]->published_on))}}, raportat la {{$currency->title()}}</div>
 				<div class="panel-body">
 					<form class="form-inline" method="post">
-						@include('components.date-picker', ['id' => 'datepicker', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'])
-						@include('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'size' => 'sm', 'label' => 'raportat la'])
+						@include('components.date-picker', ['id' => 'index_date', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'])
+						@include('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'currencyAsValue' => true, 'size' => 'sm', 'label' => 'raportat la'])
 						<div class="form-group">
 							<input type="submit" name="display" value="update" class="btn btn-primary btn-sm">
 						</div>

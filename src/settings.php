@@ -19,7 +19,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
 
-        'determineRouteBeforeAppMiddleware' => false,
+        'determineRouteBeforeAppMiddleware' => true,
         'db' => [
             'driver' => 'mysql',
             'host' => 'localhost',

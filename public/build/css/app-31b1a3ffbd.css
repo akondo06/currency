@@ -255,7 +255,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #fff; }
+  background-color: #eee; }
 
 input,
 button,
@@ -293,7 +293,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #fff;
+  background-color: #eee;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
@@ -1252,7 +1252,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #fff; }
+    background-color: #eee; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -2759,7 +2759,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #fff;
+      background-color: #eee;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -2813,7 +2813,7 @@ tbody.collapse.in {
     .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
     .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #fff; } }
+      border-bottom-color: #eee; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -3316,7 +3316,7 @@ tbody.collapse.in {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.428571429;
-  background-color: #fff;
+  background-color: #eee;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: border 0.2s ease-in-out; }
@@ -4189,6 +4189,20 @@ a.thumbnail.active {
 form.converter {
   position: relative; }
 
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin-bottom: 60px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px; }
+
 /*!
  * Datepicker for Bootstrap
  *
@@ -4427,15 +4441,49 @@ form.converter {
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
 */
-header {
-  padding-top: 20px; }
+/* 
+	Should contain styles that apply to the component itself 
+	and no changes to the components that it will include! 
+*/
+.ad {
+  background-color: #777777;
+  overflow: hidden; }
+  .ad.size-728x90 {
+    display: none;
+    width: 728px;
+    height: 90px; }
+  @media (min-width: 768px) {
+    .ad.size-728x90 {
+      display: block; } }
 
 /* 
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
 */
-footer {
-  text-align: center; }
+header .navbar.navbar-with-ad {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  border-width: 0;
+  border-bottom-width: 1px; }
+  header .navbar.navbar-with-ad .navbar-header {
+    float: none;
+    padding: 10px; }
+    header .navbar.navbar-with-ad .navbar-header:before, header .navbar.navbar-with-ad .navbar-header:after {
+      content: " ";
+      display: table; }
+    header .navbar.navbar-with-ad .navbar-header:after {
+      clear: both; }
+
+/* 
+	Should contain styles that apply to the component itself 
+	and no changes to the components that it will include! 
+*/
+footer.footer {
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7; }
 
 /* 
 	Should contain styles that apply to the component itself 
@@ -4447,6 +4495,16 @@ footer {
     position: absolute;
     right: 10px;
     top: 10px; }
+
+.panel.panel-with-table-sm {
+  overflow-x: auto; }
+  .panel.panel-with-table-sm table.table {
+    min-width: 768px; }
+  @media (min-width: 768px) {
+    .panel.panel-with-table-sm {
+      overflow-x: visible; }
+      .panel.panel-with-table-sm table.table {
+        min-width: 0; } }
 
 /* 
 	Should contain styles that apply to the component itself 

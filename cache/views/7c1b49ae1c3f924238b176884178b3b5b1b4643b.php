@@ -51,12 +51,12 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<div class="panel panel-default">
+			<div class="panel panel-default panel-with-table-sm">
 				<div class="panel-heading">Cursul BNR afisat astazi <?php echo e(date('d F Y')); ?> a fost licitat de catre BNR in data de: <?php echo e(date('d F Y', strtotime($rates[0]->published_on))); ?>, raportat la <?php echo e($currency->title()); ?></div>
 				<div class="panel-body">
 					<form class="form-inline" method="post">
-						<?php echo $__env->make('components.date-picker', ['id' => 'datepicker', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-						<?php echo $__env->make('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'size' => 'sm', 'label' => 'raportat la'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('components.date-picker', ['id' => 'index_date', 'value' => $index_date, 'size' => 'sm', 'label' => 'Afiseaza curs BNR din data de:'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+						<?php echo $__env->make('components.currencies-select', ['id' => 'index_currency', 'selected' => $currency->currency, 'currencyAsValue' => true, 'size' => 'sm', 'label' => 'raportat la'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 						<div class="form-group">
 							<input type="submit" name="display" value="update" class="btn btn-primary btn-sm">
 						</div>

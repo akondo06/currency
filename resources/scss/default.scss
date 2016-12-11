@@ -1,0 +1,7 @@
+
+// Sticky footer ...
+$footer-height: 60px;
+
+html { position: relative; min-height: 100%; }
+body { margin-bottom: $footer-height; }
+.footer { position: absolute; bottom: 0; width: 100%; height: $footer-height; line-height: $footer-height; }

@@ -12,7 +12,7 @@ $white: #fff;
 			node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables
 */
 
-$body-bg: #fff;
+$body-bg: #eee;
 // $font-family-sans-serif:  Ubuntu, Helvetica, Arial, sans-serif;
 // $font-family-serif:       Ubuntu, Georgia, "Times New Roman", Times, serif !default;
 $font-family-sans-serif: 'Lato', sans-serif;
@@ -26,8 +26,11 @@ $grid-gutter-width: 15px;
 /* Importing app stuff! */
 @import "mixins";
 @import "utilities";
+@import "default";
 @import "components/_datepicker";
 @import "components/_nav";
+@import "components/_table";
+@import "components/_ad";
 @import "components/_header";
 @import "components/_footer";
 @import "components/_panel";

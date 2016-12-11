@@ -1,0 +1,12 @@
+/* 
+	Should contain styles that apply to the component itself 
+	and no changes to the components that it will include! 
+*/
+
+.ad { background-color: $gray-light; overflow: hidden;
+	&.size-728x90 { display: none; width: 728px; height: 90px; }
+
+	@media (min-width: $grid-float-breakpoint) {
+		&.size-728x90 { display: block; }
+	}
+}

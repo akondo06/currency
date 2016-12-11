@@ -10,6 +10,10 @@ $app->add(new \Slim\Middleware\Session([
 ]));
 
 $app->add(function($request, $response, $next) use($container) {
+    // Add current route so it can be used in helpers.. fucking helll
+    $route = $request->getAttribute('route');
+    $container->currentRoute = $route;
+
     // First execute anything else
     $response = $next($request, $response);
 

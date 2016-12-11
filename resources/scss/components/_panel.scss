@@ -7,4 +7,12 @@
 	.panel-heading { position: relative;
 		.panel-actions { position: absolute; right: 10px; top: 10px; }
 	}
+
+	&.panel-with-table-sm { overflow-x: auto;
+		table.table { min-width: $grid-float-breakpoint; }
+		
+		@media (min-width: $grid-float-breakpoint) { overflow-x: visible;
+			table.table { min-width: 0; }
+		}
+	}
 }
