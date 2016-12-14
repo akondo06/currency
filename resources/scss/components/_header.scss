@@ -5,7 +5,7 @@
 
 header {
 	.navbar {
-		&.navbar-with-ad { @include box-shadow(0 2px 12px rgba(0, 0, 0, .05)); @include border-radius(0); border-width: 0; border-bottom-width: 1px;
+		&.navbar-with-ad { @include box-shadow(0 2px 12px rgba(0, 0, 0, .05)); @include border-radius(0); border-width: 0;
 			.navbar-header { @include clearfix(); float: none; padding: 10px; }
 		}
 	}

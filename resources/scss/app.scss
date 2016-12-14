@@ -20,6 +20,24 @@ $font-family-sans-serif: 'Lato', sans-serif;
 $grid-columns: 12;
 $grid-gutter-width: 15px;
 
+$navbar-default-color: #9698B2;
+$navbar-default-bg: #000022;
+
+$navbar-default-link-color:	$navbar-default-color;
+$navbar-default-link-hover-color:	 #fff;
+$navbar-default-link-active-bg: $body-bg;
+
+// // Navbar brand label
+// $navbar-default-brand-color:               $navbar-default-link-color !default;
+// $navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
+// $navbar-default-brand-hover-bg:            transparent !default;
+
+// // Navbar toggle
+$navbar-default-toggle-hover-bg: $navbar-default-link-active-bg;
+$navbar-default-toggle-icon-bar-bg: $navbar-default-color;
+$navbar-default-toggle-border-color: $navbar-default-color;
+
+
 @import "bootstrap";
 /* END */
 

@@ -272,7 +272,6 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1484,7 +1483,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1989,7 +1987,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -3106,58 +3103,58 @@ tbody.collapse.in {
       margin-right: 0; } }
 
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7; }
+  background-color: #000022;
+  border-color: #000001; }
   .navbar-default .navbar-brand {
-    color: #777; }
+    color: #9698B2; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-      color: #5e5e5e;
+      color: #797b9c;
       background-color: transparent; }
   .navbar-default .navbar-text {
-    color: #777; }
+    color: #9698B2; }
   .navbar-default .navbar-nav > li > a {
-    color: #777; }
+    color: #9698B2; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #333;
+      color: #fff;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
-    background-color: #e7e7e7; }
+    background-color: #eee; }
   .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
     color: #ccc;
     background-color: transparent; }
   .navbar-default .navbar-toggle {
-    border-color: #ddd; }
+    border-color: #9698B2; }
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-      background-color: #ddd; }
+      background-color: #eee; }
     .navbar-default .navbar-toggle .icon-bar {
-      background-color: #888; }
+      background-color: #9698B2; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
-    border-color: #e7e7e7; }
+    border-color: #000001; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #e7e7e7;
+    background-color: #eee;
     color: #555; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-      color: #777; }
+      color: #9698B2; }
       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #333;
+        color: #fff;
         background-color: transparent; }
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
       color: #555;
-      background-color: #e7e7e7; }
+      background-color: #eee; }
     .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
       color: #ccc;
       background-color: transparent; } }
   .navbar-default .navbar-link {
-    color: #777; }
+    color: #9698B2; }
     .navbar-default .navbar-link:hover {
-      color: #333; }
+      color: #fff; }
   .navbar-default .btn-link {
-    color: #777; }
+    color: #9698B2; }
     .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-      color: #333; }
+      color: #fff; }
     .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus,
     fieldset[disabled] .navbar-default .btn-link:hover,
     fieldset[disabled] .navbar-default .btn-link:focus {
@@ -4465,8 +4462,7 @@ header .navbar.navbar-with-ad {
   border-radius: 0;
   background-clip: padding-box;
   /* stops bg color from leaking outside the border: */
-  border-width: 0;
-  border-bottom-width: 1px; }
+  border-width: 0; }
   header .navbar.navbar-with-ad .navbar-header {
     float: none;
     padding: 10px; }
@@ -4482,8 +4478,12 @@ header .navbar.navbar-with-ad {
 */
 footer.footer {
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
-  background-color: #f8f8f8;
-  border-top: 1px solid #e7e7e7; }
+  background-color: #000022;
+  color: #9698B2; }
+  footer.footer a {
+    color: #9698B2; }
+    footer.footer a:hover, footer.footer a:active, footer.footer a:focus {
+      color: #fff; }
 
 /* 
 	Should contain styles that apply to the component itself 
