@@ -4,10 +4,14 @@
 */
 
 .chart-container { width: 100%;
+	* { box-sizing: content-box; }
+
 	.amcharts-chart-div {
 		a { display: none!important; }
 	}
 
 	&.small { height: 220px; }
-	&.stock { height: 600px; }
+	&.stock { height: 600px;
+		.amcharts-period-input, .amcharts-period-input-selected { border-radius: 0!important; }
+	}
 }

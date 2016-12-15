@@ -4191,6 +4191,7 @@ html {
   min-height: 100%; }
 
 body {
+  background: url(../img/money-pattern.jpg) #eee;
   margin-bottom: 60px; }
 
 .footer {
@@ -4458,6 +4459,7 @@ body {
 	and no changes to the components that it will include! 
 */
 header .navbar.navbar-with-ad {
+  background: url(../img/header.png) no-repeat top center #000022;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   border-radius: 0;
   background-clip: padding-box;
@@ -4512,12 +4514,16 @@ footer.footer {
 */
 .chart-container {
   width: 100%; }
+  .chart-container * {
+    box-sizing: content-box; }
   .chart-container .amcharts-chart-div a {
     display: none !important; }
   .chart-container.small {
     height: 220px; }
   .chart-container.stock {
     height: 600px; }
+    .chart-container.stock .amcharts-period-input, .chart-container.stock .amcharts-period-input-selected {
+      border-radius: 0 !important; }
 
 /* 
 	Should contain styles that apply to the component itself 
