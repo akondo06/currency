@@ -1,10 +1,12 @@
 @extends('layouts.one-column')
 
 @section('content')
-	<div class="panel panel-default">
-		<div class="panel-heading">Evolutie Curs</div>
-		<div class="panel-body">
-			<div class="chart-container stock" id="chart-currency-evolution" data-currency="EUR"></div>
+	<div class="panel-wrapper">
+		<h3>Evolutie Curs</h3>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="chart-container stock" id="chart-currency-evolution" data-currency="EUR"></div>
+			</div>
 		</div>
 	</div>
 @endsection

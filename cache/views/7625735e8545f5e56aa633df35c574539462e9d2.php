@@ -17,7 +17,7 @@
 						<li <?php echo isRoute('currency-converter'); ?>><a href="<?php echo e(urlFor('currency-converter')); ?>">Convertor Valutar</a></li>
 						<li <?php echo isRoute('currency-evolution'); ?>><a href="<?php echo e(urlFor('currency-evolution')); ?>">Evolutie Curs</a></li>
 						
-						<li <?php echo isRoute('history'); ?>><a href="<?php echo e(urlFor('history')); ?>">Istoric Curs Valutar</a></li>
+						<li <?php echo isRoute(['history', 'onDate']); ?>><a href="<?php echo e(urlFor('history')); ?>">Istoric Curs Valutar</a></li>
 					</ul>
 				</div>
 			</div>

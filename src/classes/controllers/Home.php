@@ -75,7 +75,8 @@ class Home extends \App\Controllers\Base {
 
 		$allowed_week_days = [1, 2, 3, 4, 5];
 
-		$month_names = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+		$month_names = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
 
 		$step = \DateInterval::createFromDateString('1 year');
 		while($date >= $date_min && $date <= $date_max) {

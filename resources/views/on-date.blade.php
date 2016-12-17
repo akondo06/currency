@@ -1,10 +1,10 @@
 @extends('layouts.two-columns')
 
 @section('content')
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			Cursul pe data de {{date('d F Y', strtotime($date))}}. 
+	<div class="panel-wrapper">
+		<h3>Cursul pe data de {{roDate($date, 'long')}}.</h3>
+		<div class="panel panel-default">
+			@include('components.currencies-table', ['rates' => $rates, 'excludeCurrencies' => ['RON'], 'value_currency' => 'RON'])
 		</div>
-		@include('components.currencies-table', ['rates' => $rates, 'excludeCurrencies' => ['RON'], 'value_currency' => 'RON'])
 	</div>
 @endsection

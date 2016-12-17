@@ -15,3 +15,7 @@
 		.amcharts-period-input, .amcharts-period-input-selected { border-radius: 0!important; }
 	}
 }
+
+.chart-wrapper { position: relative;
+	> .currencies-dropdown { position: absolute; top: 4px; right: 4px; z-index: 2; }
+}

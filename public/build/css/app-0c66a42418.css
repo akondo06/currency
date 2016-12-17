@@ -272,6 +272,7 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1483,6 +1484,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1987,6 +1989,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -4186,6 +4189,12 @@ a.thumbnail.active {
 form.converter {
   position: relative; }
 
+.positive {
+  color: #73a900; }
+
+.negative {
+  color: #ff0000; }
+
 html {
   position: relative;
   min-height: 100%; }
@@ -4459,7 +4468,7 @@ body {
 	and no changes to the components that it will include! 
 */
 header .navbar.navbar-with-ad {
-  background: url(../img/header.png) no-repeat top center #000022;
+  background: url(../img/header.png) no-repeat top center rgba(0, 0, 34, 0.8);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   border-radius: 0;
   background-clip: padding-box;
@@ -4480,7 +4489,7 @@ header .navbar.navbar-with-ad {
 */
 footer.footer {
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
-  background-color: #000022;
+  background: url(../img/header.png) no-repeat top center #000022;
   color: #9698B2; }
   footer.footer a {
     color: #9698B2; }
@@ -4508,6 +4517,16 @@ footer.footer {
       .panel.panel-with-table-sm table.table {
         min-width: 0; } }
 
+.panel-wrapper > h1, .panel-wrapper > h2, .panel-wrapper > h3 {
+  padding: 10px 5px;
+  margin: 0;
+  color: #000021;
+  font-size: 16px;
+  font-weight: 500; }
+
+.panel-wrapper .chart-wrapper {
+  padding-top: 5px !important; }
+
 /* 
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
@@ -4524,6 +4543,14 @@ footer.footer {
     height: 600px; }
     .chart-container.stock .amcharts-period-input, .chart-container.stock .amcharts-period-input-selected {
       border-radius: 0 !important; }
+
+.chart-wrapper {
+  position: relative; }
+  .chart-wrapper > .currencies-dropdown {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 2; }
 
 /* 
 	Should contain styles that apply to the component itself 

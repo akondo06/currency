@@ -26,7 +26,7 @@
 								<li><a href="{{urlFor('page', ['name' => 'cel-mai-bun-curs-franc-elvetian'])}}">CHF - Francul Elvetian</a></li>
 							</ul>
 						</li> --}}
-						<li {!!isRoute('history')!!}><a href="{{urlFor('history')}}">Istoric Curs Valutar</a></li>
+						<li {!!isRoute(['history', 'onDate'])!!}><a href="{{urlFor('history')}}">Istoric Curs Valutar</a></li>
 					</ul>
 				</div>
 			</div>
