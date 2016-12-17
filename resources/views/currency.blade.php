@@ -32,7 +32,7 @@
 						<tr>
 							<td>{{roDate($rate->published_on)}}</td>
 							@include('components.currency-variation', ['variation' => $rate->variation()])
-							<td align="right">{{$rate->converted_value}}</td>
+							<td align="right">{{roNumber($rate->converted_value)}}</td>
 						</tr>
 					@endforeach
 				</tbody>

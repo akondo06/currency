@@ -51,3 +51,15 @@ form.converter { position: relative; }
 
 .positive { color: $green; }
 .negative { color: $red; }
+
+.todays-rates { text-align: center;
+	.currency { display: inline-block; color: $white; margin-left: 10px; font-size: 12px;
+		.flag { vertical-align: middle; }
+		.value { vertical-align: middle; }
+	}
+
+	@media (min-width: $grid-float-breakpoint) { padding-top: 16px; text-align: left; }
+}
+
+
+

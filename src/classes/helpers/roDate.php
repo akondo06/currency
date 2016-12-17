@@ -73,11 +73,3 @@ if(!function_exists('roDate')) {
 		return $result;
 	}
 }
-
-
-
-
-
-
-
-

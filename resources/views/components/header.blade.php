@@ -12,7 +12,7 @@
 					<div class="ad size-728x90 navbar-right"></div>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav navbar-left">
 						<li {!!isRoute('index')!!}><a href="{{urlFor('index')}}">Acasa</a></li>
 						<li {!!isRoute('currency-converter')!!}><a href="{{urlFor('currency-converter')}}">Convertor Valutar</a></li>
 						<li {!!isRoute('currency-evolution')!!}><a href="{{urlFor('currency-evolution')}}">Evolutie Curs</a></li>
@@ -28,6 +28,14 @@
 						</li> --}}
 						<li {!!isRoute(['history', 'onDate'])!!}><a href="{{urlFor('history')}}">Istoric Curs Valutar</a></li>
 					</ul>
+					<div class="nav navbar-nav navbar-right todays-rates">
+						@foreach (ratesOnDate() as $rate)
+						<div class="currency" title="{{$rate->currency}}">
+							<span class="flag {{strtolower($rate->currency)}}"></span>
+							<span class="value">{{roNumber($rate->converted_value, 2)}} RON</span>
+						</div>
+						@endforeach
+					</div>
 				</div>
 			</div>
 		</nav>

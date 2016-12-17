@@ -14,4 +14,5 @@
 		<label for="result">Rezultat:</label>
 		<input type="text" id="result" class="form-control input-sm" value="0">
 	</div>
+	<a href="{{urlFor('currency-converter')}}" class="pull-right">Convertor avansat &raquo;</a>
 </form>

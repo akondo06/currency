@@ -174,7 +174,6 @@ class Home extends \App\Controllers\Base {
 
 		$args['currency'] = $currency;
 
-
 		$base_currency = $args['base_currency'];
 		$start_date = $args['start_date'];
 		$end_date = $args['end_date'];

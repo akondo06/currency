@@ -24,15 +24,15 @@
 					<td align="middle">{{$rate->currency}}</td>
 					<td><a href="{{urlFor('currency', ['slug'=> $rate->currencyObj->slug])}}">{{$rate->currencyObj->name}}</a></td>
 					@if (isset($with_variation))
-						<td align="right">{{$rate->two_days_before->converted_value}}</td>
-						<td align="right">{{$rate->yesterday->converted_value}}</td>
+						<td align="right">{{roNumber($rate->two_days_before->converted_value)}}</td>
+						<td align="right">{{roNumber($rate->yesterday->converted_value)}}</td>
 						@include('components.currency-variation', ['variation' => $rate->variation()])
 					@endif
 					<td align="right">
 						@if (isset($rate->converted_value))
-							{{$rate->converted_value}}
+							{{roNumber($rate->converted_value)}}
 						@else
-							{{$rate->value}}
+							{{roNumber($rate->value)}}
 						@endif
 						@if (isset($value_currency))
 							{{$value_currency}}

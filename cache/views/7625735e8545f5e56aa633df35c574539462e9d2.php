@@ -12,13 +12,21 @@
 					<div class="ad size-728x90 navbar-right"></div>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav navbar-left">
 						<li <?php echo isRoute('index'); ?>><a href="<?php echo e(urlFor('index')); ?>">Acasa</a></li>
 						<li <?php echo isRoute('currency-converter'); ?>><a href="<?php echo e(urlFor('currency-converter')); ?>">Convertor Valutar</a></li>
 						<li <?php echo isRoute('currency-evolution'); ?>><a href="<?php echo e(urlFor('currency-evolution')); ?>">Evolutie Curs</a></li>
 						
 						<li <?php echo isRoute(['history', 'onDate']); ?>><a href="<?php echo e(urlFor('history')); ?>">Istoric Curs Valutar</a></li>
 					</ul>
+					<div class="nav navbar-nav navbar-right todays-rates">
+						<?php $__currentLoopData = ratesOnDate(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rate): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+						<div class="currency" title="<?php echo e($rate->currency); ?>">
+							<span class="flag <?php echo e(strtolower($rate->currency)); ?>"></span>
+							<span class="value"><?php echo e(roNumber($rate->converted_value, 2)); ?> RON</span>
+						</div>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+					</div>
 				</div>
 			</div>
 		</nav>

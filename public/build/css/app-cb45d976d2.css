@@ -4195,6 +4195,22 @@ form.converter {
 .negative {
   color: #ff0000; }
 
+.todays-rates {
+  text-align: center; }
+  .todays-rates .currency {
+    display: inline-block;
+    color: #fff;
+    margin-left: 10px;
+    font-size: 12px; }
+    .todays-rates .currency .flag {
+      vertical-align: middle; }
+    .todays-rates .currency .value {
+      vertical-align: middle; }
+  @media (min-width: 768px) {
+    .todays-rates {
+      padding-top: 16px;
+      text-align: left; } }
+
 html {
   position: relative;
   min-height: 100%; }
