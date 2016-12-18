@@ -272,7 +272,6 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1484,7 +1483,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1989,7 +1987,6 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -4108,7 +4105,7 @@ a.thumbnail.active {
   .flag.xdr {
     background-position: 0 -0; }
   .flag.xau {
-    background-position: 0 0; }
+    background-position: -32px -55px; }
   .flag.us, .flag.usd {
     background-position: 0 -55px; }
   .flag.ua, .flag.uah {
@@ -4484,7 +4481,7 @@ body {
 	and no changes to the components that it will include! 
 */
 header .navbar.navbar-with-ad {
-  background: url(../img/header.png) no-repeat top center rgba(0, 0, 34, 0.8);
+  background: url(../img/header.png) top center rgba(0, 0, 34, 0.8);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   border-radius: 0;
   background-clip: padding-box;
