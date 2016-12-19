@@ -1,8 +1,8 @@
 <?php
 
 if(!function_exists('roDate')) {
-	function roDate($date, $format='default') {
-
+	function roDate($givenDate, $format='default') {
+		$date = $givenDate;
 		$formats = [
 			'default' => 'd.m.Y',
 			'long' => 'd F Y'
@@ -45,6 +45,10 @@ if(!function_exists('roDate')) {
 
 		$date = str_replace(' ', '-', strtolower($date));
 		$date = explode('-', $date);
+		
+		if(count($date) != 3) {
+			return $givenDate;
+		}
 
 		$year = $date[0];
 		$month = $date[1];
@@ -62,6 +66,7 @@ if(!function_exists('roDate')) {
 		if($month < 9) {
 			$month = '0'.$month;
 		}
+
 
 		$result = new \DateTime($year.'-'.$month.'-'.$day);
 		$result = $result->format($format);
