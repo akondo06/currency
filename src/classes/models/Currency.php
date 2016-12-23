@@ -8,7 +8,7 @@ class Currency extends Model {
 
 	protected $table = 'currencies';
 
-	protected $fillable = ['currency', 'name', 'slug', 'multiplier'];
+	protected $fillable = ['currency', 'name', 'slug', 'multiplier', 'sortIndex'];
 
 	public function scopeTitle() {
 		return $this->currency.' ('.$this->name.')';

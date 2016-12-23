@@ -31,7 +31,7 @@ class Rate extends Model {
 	}
 
 	public function scopeOnDate($query, $date = null) {
-		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->orderBy('currency', 'desc')->groupBy('currency');
+		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->join('currencies', 'currencies.currency', '=', 'rates.currency')->orderBy('currencies.sortIndex', 'desc')->groupBy('rates.currency');
 	}
 
 	public function scopeBetweenDates($query, $start_date = null, $end_date = null, $order = 'asc') {
@@ -48,19 +48,19 @@ class Rate extends Model {
 	public function scopeGetEquivalentValues($query, $base_currency, $amount, $filter_currencies = null, $exclude_currencies = null, $reverse = false) {
 		global $container;
 		if($filter_currencies != null) {
-			$query->whereIn('currency', $filter_currencies);
+			$query->whereIn($this->table.'.currency', $filter_currencies);
 		}
 		if(!$exclude_currencies) {
 			$exclude_currencies = [$base_currency];
 		}
-		$query->whereNotIn('currency', $exclude_currencies);
+		$query->whereNotIn($this->table.'.currency', $exclude_currencies);
 
 		$base_currency = $this->whereCurrency($base_currency)->first();
 		$currency_multiplier = $amount * $base_currency->value;
 
-		$converted_value = "{$currency_multiplier} / `value`";
+		$converted_value = "{$currency_multiplier} / `".$this->table."`.`value`";
 		if($reverse) {
-			$converted_value = "`value` / {$currency_multiplier}";
+			$converted_value = "`".$this->table."`.`value` / {$currency_multiplier}";
 		} 
 
 		return $query->get(["*", $container['db']::raw("FORMAT(({$converted_value}), 4) AS `converted_value`")]);
