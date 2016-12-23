@@ -4502,7 +4502,7 @@ header .navbar.navbar-with-ad {
 */
 footer.footer {
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
-  background: url(../img/header.png) no-repeat top center #000022;
+  background: url(../img/header.png) top center #000022;
   color: #9698B2; }
   footer.footer a {
     color: #9698B2; }

@@ -3,7 +3,7 @@
 	and no changes to the components that it will include! 
 */
 
-footer.footer { @include box-shadow(0 -2px 12px rgba(0, 0, 0, .05)); background: url(../img/header.png) no-repeat top center $navbar-default-bg; color: $navbar-default-color;
+footer.footer { @include box-shadow(0 -2px 12px rgba(0, 0, 0, .05)); background: url(../img/header.png) top center $navbar-default-bg; color: $navbar-default-color;
 	a { color: $navbar-default-color;
 		&:hover, &:active, &:focus { color: $white; }
 	}
