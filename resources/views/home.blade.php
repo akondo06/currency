@@ -38,14 +38,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="panel-wrapper">
-				<h3>Convertor Rapid</h3>
-				<div class="panel panel-default">
-					<div class="panel-body">
-						@include('components.fast-converter')
-					</div>
-				</div>
-			</div>
+			@include('components.aside')
 		</div>
 		<div class="col-md-9">
 			<div class="panel-wrapper">

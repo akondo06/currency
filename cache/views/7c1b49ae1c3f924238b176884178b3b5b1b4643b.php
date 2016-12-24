@@ -36,14 +36,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-3">
-			<div class="panel-wrapper">
-				<h3>Convertor Rapid</h3>
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<?php echo $__env->make('components.fast-converter', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-					</div>
-				</div>
-			</div>
+			<?php echo $__env->make('components.aside', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		</div>
 		<div class="col-md-9">
 			<div class="panel-wrapper">

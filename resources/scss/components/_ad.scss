@@ -9,4 +9,8 @@
 	@media (min-width: $grid-float-breakpoint) {
 		&.size-728x90 { display: block; }
 	}
+
+	&.ad-center { margin: 0 auto; }
+
+	&.ad-as-panel { border-radius: 4px; box-shadow: 0 1px 1px rgba($black, 0.05); background-color: $white; border: 1px solid #ddd; padding: 4px; margin-bottom: 20px; }
 }
