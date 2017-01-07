@@ -58,7 +58,11 @@ form.converter { position: relative; }
 		.value { vertical-align: middle; }
 	}
 
-	@media (min-width: $grid-float-breakpoint) { padding-top: 16px; text-align: left; }
+	@media (min-width: $grid-float-breakpoint) {  text-align: left; }
+}
+
+.page-title {
+	h1, h2, h3, h4 { padding: 0; margin: 4px 0 0 0; font-size: 14px; color: $page-title-color; }
 }
 
 

@@ -272,6 +272,7 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1483,6 +1484,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1987,6 +1989,7 @@ select[multiple].input-lg,
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
@@ -3103,58 +3106,58 @@ tbody.collapse.in {
       margin-right: 0; } }
 
 .navbar-default {
-  background-color: #000022;
-  border-color: #000001; }
+  background-color: #fff;
+  border-color: #eeeeee; }
   .navbar-default .navbar-brand {
-    color: #9698B2; }
+    color: #777; }
     .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-      color: #797b9c;
+      color: #5e5e5e;
       background-color: transparent; }
   .navbar-default .navbar-text {
     color: #9698B2; }
   .navbar-default .navbar-nav > li > a {
-    color: #9698B2; }
+    color: #777; }
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #fff;
+      color: #333;
       background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #555;
-    background-color: #eee; }
+    background-color: #eeeeee; }
   .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
     color: #ccc;
     background-color: transparent; }
   .navbar-default .navbar-toggle {
-    border-color: #9698B2; }
+    border-color: #ddd; }
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-      background-color: #eee; }
+      background-color: #ddd; }
     .navbar-default .navbar-toggle .icon-bar {
-      background-color: #9698B2; }
+      background-color: #888; }
   .navbar-default .navbar-collapse,
   .navbar-default .navbar-form {
-    border-color: #000001; }
+    border-color: #eeeeee; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #eee;
+    background-color: #eeeeee;
     color: #555; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-      color: #9698B2; }
+      color: #777; }
       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #fff;
+        color: #333;
         background-color: transparent; }
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
       color: #555;
-      background-color: #eee; }
+      background-color: #eeeeee; }
     .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
       color: #ccc;
       background-color: transparent; } }
   .navbar-default .navbar-link {
-    color: #9698B2; }
+    color: #777; }
     .navbar-default .navbar-link:hover {
-      color: #fff; }
+      color: #333; }
   .navbar-default .btn-link {
-    color: #9698B2; }
+    color: #777; }
     .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-      color: #fff; }
+      color: #333; }
     .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus,
     fieldset[disabled] .navbar-default .btn-link:hover,
     fieldset[disabled] .navbar-default .btn-link:focus {
@@ -4205,8 +4208,13 @@ form.converter {
       vertical-align: middle; }
   @media (min-width: 768px) {
     .todays-rates {
-      padding-top: 16px;
       text-align: left; } }
+
+.page-title h1, .page-title h2, .page-title h3, .page-title h4 {
+  padding: 0;
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  color: #9698B2; }
 
 html {
   position: relative;
@@ -4489,21 +4497,27 @@ body {
 	Should contain styles that apply to the component itself 
 	and no changes to the components that it will include! 
 */
-header .navbar.navbar-with-ad {
-  background: url(../img/header.png) top center rgba(0, 0, 34, 0.8);
+header {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 0;
-  background-clip: padding-box;
-  /* stops bg color from leaking outside the border: */
-  border-width: 0; }
-  header .navbar.navbar-with-ad .navbar-header {
-    float: none;
-    padding: 10px; }
-    header .navbar.navbar-with-ad .navbar-header:before, header .navbar.navbar-with-ad .navbar-header:after {
-      content: " ";
-      display: table; }
-    header .navbar.navbar-with-ad .navbar-header:after {
-      clear: both; }
+  margin-bottom: 10px; }
+  header .navbar {
+    border-radius: 0;
+    background-clip: padding-box;
+    /* stops bg color from leaking outside the border: */
+    border-width: 0;
+    margin-bottom: 0;
+    min-height: 20px; }
+    header .navbar.navbar-info {
+      background: url(../img/header.png) top center rgba(0, 0, 34, 0.8); }
+      header .navbar.navbar-info .page-title {
+        text-align: center; }
+  @media (min-width: 768px) {
+    header .navbar.navbar-main {
+      padding: 10px 0; }
+    header .navbar.navbar-info {
+      padding: 6px 0 10px 0; }
+      header .navbar.navbar-info .page-title {
+        text-align: left; } }
 
 /* 
 	Should contain styles that apply to the component itself 
