@@ -84,8 +84,24 @@ var chartVars = {
 		url: null,
 		showErrors: true,
 		async: true,
-		complete: function() {
-			// console.log('yep.. data e acolo ...');
+		complete: function(c) {
+			var chart = $(c.containerDiv).parent().attr('id').replace('chart', '');
+
+			var todayDate = new Date().toISOString().split('T')[0];
+
+			var todayValueHolder = $('.chart-'+chart+'-value-today');
+
+			if(todayValueHolder.attr('data-date')) {
+				todayDate = todayValueHolder.attr('data-date');
+			}
+			var valueToday = c.dataProvider.find(function(d) { return d.date === todayDate });
+
+			if(valueToday) {
+				todayValueHolder.closest('.chart-today-value').show();
+				todayValueHolder.text(valueToday.value);
+			} else {
+				todayValueHolder.closest('.chart-today-value').hide();
+			}
 		}
 	}
 };
@@ -372,7 +388,7 @@ function listInputSwitchSelectedValues(form) {
 
 		/* List Input */
 		var oppositeList = { convert_from: 'convert-to', convert_to: 'convert-from' };
-		$('.list-input input[type="hidden"]').on('change', function(event) {
+		$('.list-input input[type="hidden"]').on('change', function() {
 			var field = $(this).closest('.list-input');
 			var value = $(this).val();
 			var valueIsSupported = currencies[value] || null;
@@ -382,7 +398,7 @@ function listInputSwitchSelectedValues(form) {
 				current.addClass('active');
 			}
 		});
-		$('.list-input li > a').on('click', function(event) {
+		$('.list-input li > a').on('click', function() {
 			event.preventDefault();
 			var field = $(this).closest('ul');
 			var input = field.find('input[type="hidden"]');

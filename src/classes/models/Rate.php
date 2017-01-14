@@ -30,6 +30,10 @@ class Rate extends Model {
 		return $positive.number_format($value - $yesterday_value, 4);
 	}
 
+	public function scopeLatestDate($query, $date = null) {
+		return $query->orderBy('published_on', 'desc')->take(1)->get(['published_on'])[0]->published_on;
+	}
+
 	public function scopeOnDate($query, $date = null) {
 		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->join('currencies', 'currencies.currency', '=', 'rates.currency')->orderBy('currencies.sortIndex', 'desc')->groupBy('rates.currency');
 	}

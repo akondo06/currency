@@ -63,10 +63,10 @@ class ChartData extends \App\Controllers\Base {
 	}
 
 	public function onDate($request, $response, $args) {
-		$date = date('Y-m-d');
+		$date = $this->latestDate;
 		if(array_key_exists('date', $args)) {
 			$dateObj = new \DateTime($args['date']);
-			$current_date = new \DateTime();
+			$current_date = new \DateTime($this->latestDate);
 			if($dateObj < $current_date) {
 				$date = $dateObj->format('Y-m-d');
 			}

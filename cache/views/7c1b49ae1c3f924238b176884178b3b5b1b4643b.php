@@ -7,6 +7,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						<?php echo $__env->make('components.currencies-dropdown', ['chart' => 1], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 						<div class="chart-container small" id="chart1"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">EUR</span> = <span class="chart-1-value-today" data-date="<?php echo e($latestDate); ?>"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>
@@ -18,6 +21,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						<?php echo $__env->make('components.currencies-dropdown', ['chart' => 2], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 						<div class="chart-container small" id="chart2"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">USD</span> = <span class="chart-2-value-today" data-date="<?php echo e($latestDate); ?>"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>
@@ -29,6 +35,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						<?php echo $__env->make('components.currencies-dropdown', ['chart' => 3], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 						<div class="chart-container small" id="chart3"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">GBP</span> = <span class="chart-3-value-today" data-date="<?php echo e($latestDate); ?>"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>

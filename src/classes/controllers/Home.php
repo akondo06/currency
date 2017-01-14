@@ -22,14 +22,20 @@ class Home extends \App\Controllers\Base {
 				$session->set('index_currency', null);
 			}
 		}
-
 		if(!$session->get('index_date')) {
-			$session->set('index_date', date('Y-m-d'));
+			$session->set('index_date', $this->latestDate);
+		} else {
+			$dateObj = new \DateTime($session->get('index_date'));
+			$latestDate = new \DateTime($this->latestDate);
+			if($dateObj > $latestDate) {
+				$session->set('index_date', $latestDate->format('Y-m-d'));
+			}
 		}
 		if(!$session->get('index_currency')) {
 			$session->set('index_currency', 'RON');
 		}
 
+		$args['latestDate'] = $this->latestDate;
 		$args['index_date'] = $session->get('index_date');
 		$args['index_currency'] = $session->get('index_currency');
 
@@ -69,7 +75,7 @@ class Home extends \App\Controllers\Base {
 
 	public function history($request, $response, $args) {
 
-		$date_max = new \DateTime();
+		$date_max = new \DateTime($this->latestDate);
 		$date_min = new \DateTime('2005-01-01');
 
 		$date = new \DateTime('2005-01-01');
@@ -109,20 +115,22 @@ class Home extends \App\Controllers\Base {
 			$year->months = array_reverse($year->months);
 		}
 
+		$args['latestDate'] = $this->latestDate;
 		$args['years'] = array_reverse($years);
 		
 		return $this->renderer->render($response, 'history', $args);
 	}
 
 	public function onDate($request, $response, $args) {
-		$date = date('Y-m-d');
+		$date = $this->latestDate;
 		if(array_key_exists('date', $args)) {
 			$dateObj = new \DateTime($args['date']);
-			$current_date = new \DateTime();
+			$current_date = new \DateTime($this->latestDate);
 			if($dateObj < $current_date) {
 				$date = $dateObj->format('Y-m-d');
 			}
 		}
+		$args['latestDate'] = $this->latestDate;
 		$args['rates'] = Rate::onDate($date)->get();
 		return $this->renderer->render($response, 'on-date', $args);
 	}
@@ -153,7 +161,7 @@ class Home extends \App\Controllers\Base {
 		}
 
 		// Attrs
-		$date = new \DateTime(); // today
+		$date = new \DateTime($this->latestDate); // today
 		$end_date = $date->format('Y-m-d');
 
 		$date->sub(\DateInterval::createFromDateString('6 months'));
@@ -162,14 +170,29 @@ class Home extends \App\Controllers\Base {
 
 		if(!$session->get($currency_session_path.'start_date')) {
 			$session->set($currency_session_path.'start_date', $start_date);
-		}
+		}/* else {
+			$dateObj = new \DateTime($session->get($currency_session_path.'start_date'));
+			$current_date = new \DateTime($this->latestDate);
+			if($dateObj < $current_date) {
+				$start_date = $dateObj->format('Y-m-d');
+			}
+			$session->set($currency_session_path.'end_date', $start_date);
+		}*/
 		if(!$session->get($currency_session_path.'end_date')) {
 			$session->set($currency_session_path.'end_date', $end_date);
-		}
+		}/* else {
+			$dateObj = new \DateTime($session->get($currency_session_path.'end_date'));
+			$current_date = new \DateTime($this->latestDate);
+			if($dateObj < $current_date) {
+				$end_date = $dateObj->format('Y-m-d');
+			}
+			$session->set($currency_session_path.'end_date', $end_date);
+		}*/
 		if(!$session->get($currency_session_path.'base_currency')) {
 			$session->set($currency_session_path.'base_currency', 'RON');
 		}
 
+		$args['latestDate'] = $this->latestDate;
 		$args['start_date'] = $session->get($currency_session_path.'start_date');
 		$args['end_date'] = $session->get($currency_session_path.'end_date');
 		$args['base_currency'] = $session->get($currency_session_path.'base_currency');

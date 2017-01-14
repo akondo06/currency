@@ -9,6 +9,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						@include('components.currencies-dropdown', ['chart' => 1])
 						<div class="chart-container small" id="chart1"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">EUR</span> = <span class="chart-1-value-today" data-date="{{$latestDate}}"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>
@@ -20,6 +23,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						@include('components.currencies-dropdown', ['chart' => 2])
 						<div class="chart-container small" id="chart2"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">USD</span> = <span class="chart-2-value-today" data-date="{{$latestDate}}"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>
@@ -31,6 +37,9 @@
 					<div class="panel-body no-padding chart-wrapper">
 						@include('components.currencies-dropdown', ['chart' => 3])
 						<div class="chart-container small" id="chart3"></div>
+						<div class="chart-today-value">
+							Astazi: 1 <span class="chart-1-currency">GBP</span> = <span class="chart-3-value-today" data-date="{{$latestDate}}"></span> RON
+						</div>
 					</div>
 				</div>
 			</div>

@@ -14,9 +14,9 @@ class Currency extends Model {
 		return $this->currency.' ('.$this->name.')';
 	}
 
-	public function todayValue() { // not correct!
-		return $this->belongsTo('App\Models\Rate', 'currency', 'currency')->onDate(previousWeekDay(date('Y-m-d')))->take(1);
-	}
+	// public function todayValue() { // not correct!
+	// 	return $this->belongsTo('App\Models\Rate', 'currency', 'currency')->onDate(previousWeekDay(date('Y-m-d')))->take(1);
+	// }
 
 	public function scopeExcludeBase($query) {
 		return $query->whereNotIn('currency', ['RON']);

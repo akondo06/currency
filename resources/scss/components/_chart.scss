@@ -14,8 +14,10 @@
 	&.stock { height: 600px;
 		.amcharts-period-input, .amcharts-period-input-selected { border-radius: 0!important; }
 	}
+
 }
 
 .chart-wrapper { position: relative;
 	> .currencies-dropdown { position: absolute; top: 4px; right: 4px; z-index: 2; }
+	.chart-today-value { display: none; padding: 2px 0 6px 0; font-weight: 700; text-align: center; }
 }

@@ -1,5 +1,5 @@
 <form class="fast-converter">
-	<p>Calculeaza conform <b>cursului valutar BNR</b> din <b>{{roDate(previousWeekDay(date('Y-m-d'), 'd F Y'), 'long')}}</b>:</p>
+	<p>Calculeaza conform <b>cursului valutar BNR</b> din <b>{{roDate(previousWeekDay($latestDate, 'd F Y'), 'long')}}</b>:</p>
 
 	@include('components.currencies-select', ['id' => 'convert-from', 'selected' => 'EUR', 'label' => 'Transforma din:'])
 	@include('components.currencies-select', ['id' => 'convert-to', 'selected' => 'RON', 'label' => 'in:', 'switch' => true])
