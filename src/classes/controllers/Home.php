@@ -66,10 +66,12 @@ class Home extends \App\Controllers\Base {
 	}
 
 	public function evolution($request, $response, $args) {
+		$args['latestDate'] = $this->latestDate;
 		return $this->renderer->render($response, 'evolution', $args);
 	}
 
 	public function convertor($request, $response, $args) {
+		$args['latestDate'] = $this->latestDate;
 		return $this->renderer->render($response, 'converter', $args);
 	}
 

@@ -35,6 +35,9 @@ class Rate extends Model {
 	}
 
 	public function scopeOnDate($query, $date = null) {
+		if($date == 'latest') {
+			$date = $this->latestDate();
+		}
 		return $query->whereDate($this->table.'.published_on', '=', previousWeekDay($date))->join('currencies', 'currencies.currency', '=', 'rates.currency')->orderBy('currencies.sortIndex', 'desc')->groupBy('rates.currency');
 	}
 

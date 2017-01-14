@@ -9,7 +9,7 @@
 		<select name="{{$id}}" id="{{$id}}" class="form-control">
 	@endif
 		@foreach (\App\Models\Currency::all() as $rate)
-			@if (!isset($exclude) || !in_array($rate->currency, $exclude))
+			@if ((!isset($exclude) || !in_array($rate->currency, $exclude)) && $rate->todayValue != null)
 				@if ($rate->currency == $selected)
 					@if (isset($currencyAsValue))
 						<option label="{{$rate->title()}}" value="{{$rate->currency}}" selected="selected">{{$rate->title()}}</option>
