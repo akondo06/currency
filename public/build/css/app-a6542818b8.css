@@ -4216,6 +4216,12 @@ form.converter {
   font-size: 14px;
   color: #9698B2; }
 
+section.white {
+  background-color: #fff;
+  padding: 10px 0; }
+  section.white .ad-as-panel {
+    margin-bottom: 0; }
+
 html {
   position: relative;
   min-height: 100%; }
